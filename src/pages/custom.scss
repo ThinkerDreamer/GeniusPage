@@ -1,0 +1,15 @@
+// Your variable overrides
+$body-bg: #f3f0f9;
+$body-color: #271254;
+$theme-colors: (
+  'primary': #7447d7,
+  'danger': #ef1f1f,
+  'secondary': #57a2e7,
+);
+$link-color: map-get(
+  $map: $theme-colors,
+  $key: primary,
+);
+
+// Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap';
