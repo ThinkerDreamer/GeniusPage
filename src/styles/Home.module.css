@@ -9,13 +9,11 @@
 
 .description {
   display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
+  justify-content: center;
+  align-items: center;
   max-width: var(--max-width);
   width: 100%;
   z-index: 2;
-  font-family: var(--font-mono);
 }
 
 .description a {
@@ -158,7 +156,7 @@
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
+    background: rgba(var(--card-rgb), 0.3);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
   }
 
