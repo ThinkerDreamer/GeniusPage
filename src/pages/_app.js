@@ -9,7 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 function App({ Component, pageProps }) {
   return (
     <ClerkProvider
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      publishableKey={
+        'pk_test_dGhhbmtmdWwtY29sdC0xNC5jbGVyay5hY2NvdW50cy5kZXYk'
+      }
       appearance={{
         variables: {
           colorPrimary: '#7447D7',
