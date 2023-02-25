@@ -28,6 +28,12 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <h2>Future Home of GeniusPage</h2>
+          <Image
+            src="/logo.png"
+            width={50}
+            height={50}
+            alt="GeniusPage Logo"
+          ></Image>
         </div>
 
         <div className={styles.center}>
