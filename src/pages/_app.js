@@ -3,6 +3,7 @@ import './App.scss';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { Dosis } from '@next/font/google';
 import SSRProvider from 'react-bootstrap/SSRProvider';
+import { GeistProvider, CssBaseline } from '@geist-ui/core';
 
 const dosis = Dosis({ subsets: ['latin'] });
 
@@ -21,9 +22,11 @@ function App({ Component, pageProps }) {
       }}
     >
       <SSRProvider>
-        <main className={dosis.className}>
-          <Component {...pageProps} />
-        </main>
+        <GeistProvider>
+          <main className={dosis.className}>
+            <Component {...pageProps} />
+          </main>
+        </GeistProvider>
       </SSRProvider>
     </ClerkProvider>
   );

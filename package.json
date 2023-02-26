@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.11.1",
+    "@geist-ui/core": "^2.3.8",
     "@next/font": "13.1.6",
     "bootstrap": "^5.2.3",
     "eslint": "8.34.0",
