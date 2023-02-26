@@ -16,6 +16,7 @@
   padding: 1.35rem;
   margin: 0 auto;
   border-radius: 15px;
+  width: 720px;
   max-width: 90%;
 }
 
@@ -25,5 +26,6 @@
   border-radius: 15px;
   text-align: center;
   min-width: 500px;
+  width: 720px;
   max-width: 100%;
 }
