@@ -6,6 +6,11 @@ $theme-colors: (
   'secondary': #57a2e7,
 );
 $link-color: #d545d8;
+$navbar-light-color: $body-color;
+$navbar-light-active-color: $body-color;
+$navbar-light-brand-color: $body-color;
+$navbar-dark-brand-color: $body-color;
+$navbar-light-brand-hover-color: $link-color;
 
 //
 // Typography from https://startbootstrap.com/theme/new-age/
