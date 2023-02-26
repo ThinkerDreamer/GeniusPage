@@ -1,4 +1,4 @@
-import '@/styles/globals.css';
+//import '@/styles/globals.css';
 import './App.scss';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { Inter } from '@next/font/google';
