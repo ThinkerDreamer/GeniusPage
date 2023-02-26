@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import styles from '@/styles/Home.module.css';
 import { useClerk } from '@clerk/clerk-react';
-import { Button } from 'react-bootstrap';
+import { Button, Navbar, Container } from 'react-bootstrap';
 
 const inter = Inter({ subsets: ['latin'] });
 // const rightArrow = `&#10132;`;
@@ -25,103 +25,37 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <h2>Future Home of GeniusPage</h2>
-          <Image
-            src="/logo.png"
-            width={50}
-            height={50}
-            alt="GeniusPage Logo"
-          ></Image>
-        </div>
+      <Navbar>
+        <Container fluid>
+          <Navbar.Brand href="#home">
+            <img
+              src="/logo-dark.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="GeniusPage Logo"
+            />{' '}
+            GeniusPage
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
+      <Container fluid>
+        <main className={styles.main}>
+          <div className={styles.description}>
+            <h2>Future Home of GeniusPage</h2>
             <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
+              src="/logo-dark.svg"
+              width={150}
+              height={150}
               priority
-            />
-          </div>
-        </div>
-        {SignUpButton()}
-        <div className={styles.grid}>
-          <div className={styles.card}>
-            <a
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Docs <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Find in-depth information about Next.js features
-              and&nbsp;API.
-            </p>
+              alt="GeniusPage Logo"
+            ></Image>
           </div>
 
-          <div className={styles.card}>
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Learn <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Learn about Next.js in an interactive course
-              with&nbsp;quizzes!
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Templates <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Discover and deploy boilerplate example
-              Next.js&nbsp;projects.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <a
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Deploy <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </div>
-        </div>
-      </main>
+          {SignUpButton()}
+        </main>
+      </Container>
     </>
   );
 }
