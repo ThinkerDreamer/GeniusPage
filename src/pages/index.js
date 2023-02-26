@@ -38,106 +38,109 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Page>
-        <Page.Header>
-          <Navbar>
-            <Container fluid>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Brand href="#home">
-                <img
-                  src="/logo-dark.svg"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="GeniusPage Logo"
-                />{' '}
-                GeniusPage
-              </Navbar.Brand>
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                  {/* If user is logged in, show sites bar, map over user's sites,
+      <Page.Header>
+        <Navbar>
+          <Container fluid>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Brand href="#home">
+              <img
+                src="/logo-dark.svg"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+                alt="GeniusPage Logo"
+              />{' '}
+              GeniusPage
+            </Navbar.Brand>
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                {/* If user is logged in, show sites bar, map over user's sites,
                   if no sites, show create new site button */}
-                  {isUserLoggedIn && (
-                    <NavDropdown
-                      title="Sites"
-                      id="collasible-nav-dropdown"
-                    >
-                      <NavDropdown.Item href="#action/3.1">
-                        Site #1
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.2">
-                        Site #2
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action/3.3">
-                        Site #3
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  )}
-                </Nav>
-                <Nav>
-                  <Nav.Link href="/login">Login</Nav.Link>
-                </Nav>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-        </Page.Header>
+                {isUserLoggedIn && (
+                  <NavDropdown
+                    title="Sites"
+                    id="collasible-nav-dropdown"
+                  >
+                    <NavDropdown.Item href="#action/3.1">
+                      Site #1
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.2">
+                      Site #2
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.3">
+                      Site #3
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                )}
+              </Nav>
+              <Nav>
+                <Nav.Link href="/login">Login</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
-        <div>
-          {showFutureHome && (
-            <div>
-              <h2>Future Home of GeniusPage</h2>
-              <GPLogo />
-            </div>
-          )}
-          <div className={styles.description}>
-            <p style={{ fontWeight: 600 }}>
-              GeniusPage is an AI-powered landing page builder that
-              helps users quickly and easily create beautiful and
-              effective landing pages for their websites.
-            </p>
-            <p style={{ fontWeight: 600 }}>
-              By leveraging the power of artificial intelligence and
-              machine learning, GeniusPage provides a user-friendly
-              interface that allows users to customize their pages
-              with ease.
-            </p>
+        {showFutureHome && (
+          <div>
+            <h2>Future Home of GeniusPage</h2>
+            <GPLogo />
           </div>
-          <RainbowContainer>
-            <Form>
-              <FloatingLabel
-                controlId="floatingTextarea"
-                label="Put your startup idea here!"
-              >
-                <Form.Control
-                  as="textarea"
-                  placeholder="Put your startup idea here!"
-                  style={{ height: '100px' }}
-                />
-              </FloatingLabel>
-              <p>
-                Need an idea? <a href="#">Here are some examples!</a>
-              </p>
-              <Button>
-                <Image
-                  src="/lightbulb-white.png"
-                  width={30}
-                  height={30}
-                  className={styles.lightbulbIcon}
-                />{' '}
-                Generate!
-              </Button>
-            </Form>
-          </RainbowContainer>
+        )}
+        <div className={styles.description}>
+          <p style={{ fontWeight: 600 }}>
+            GeniusPage is an AI-powered landing page builder that
+            helps users quickly and easily create beautiful and
+            effective landing pages for their websites.
+          </p>
+          <p style={{ fontWeight: 600 }}>
+            By leveraging the power of artificial intelligence and
+            machine learning, GeniusPage provides a user-friendly
+            interface that allows users to customize their pages with
+            ease.
+          </p>
         </div>
-        <Page.Footer>
-          <a
-            href="https://www.flaticon.com/free-icons/brain"
-            title="brain icons"
+      </Page.Header>
+      <RainbowContainer>
+        <Form
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            margin: '0 auto',
+          }}
+        >
+          <FloatingLabel
+            controlId="floatingTextarea"
+            label="Put your startup idea here!"
           >
-            Brain icons created by Freepik - Flaticon
-          </a>
-        </Page.Footer>
-      </Page>
+            <Form.Control
+              as="textarea"
+              placeholder="Put your startup idea here!"
+              style={{ height: '200px', width: '400px' }}
+            />
+          </FloatingLabel>
+          <p>
+            Need an idea? <a href="#">Here are some examples!</a>
+          </p>
+          <Button>
+            <Image
+              src="/lightbulb-white.png"
+              width={30}
+              height={30}
+              className={styles.lightbulbIcon}
+            />{' '}
+            Generate!
+          </Button>
+        </Form>
+      </RainbowContainer>
+      <Page.Footer>
+        <a
+          href="https://www.flaticon.com/free-icons/brain"
+          title="brain icons"
+        >
+          Brain icons created by Freepik - Flaticon
+        </a>
+      </Page.Footer>
     </>
   );
 }
