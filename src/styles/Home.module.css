@@ -1,9 +1,5 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
+  padding: 1rem;
   min-height: 100vh;
 }
 
@@ -11,91 +7,44 @@
   display: block;
   margin: 0 auto 1rem;
   text-align: center;
-  max-width: var(--max-width);
-  width: 100%;
-  z-index: 2;
+  max-width: 1000px;
+  width: 90%;
+}
+
+.rainbowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    #ef1f1f 0%,
+    #e52d62 9.36%,
+    #e42f6a 21.35%,
+    #d840be 33.85%,
+    #d545d8 52.6%,
+    #57a2e7 99.99%,
+    #57a2e7 100%
+  );
+  min-height: 0.667vh;
+  padding: 1.35rem;
+  margin: 0 auto;
+  border-radius: 15px;
+  width: max-content;
+}
+
+.transparencyOverRainbow {
+  padding: 1.35rem;
+  background: rgba(243, 240, 249, 0.8);
+  border-radius: 15px;
+  text-align: center;
+  min-width: 500px;
 }
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    background: rgba(var(--card-rgb), 0.3);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
-  }
-
-  .card:hover span {
-    transform: translateX(4px);
-  }
 }
 
 @media (prefers-reduced-motion) {
-  .thirteen::before {
-    animation: none;
-  }
-
-  .card:hover span {
-    transform: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
-}
-
-/* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
-    grid-template-columns: repeat(2, 50%);
-  }
 }
 
 @keyframes rotate {
