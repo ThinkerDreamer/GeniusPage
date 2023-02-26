@@ -5,10 +5,7 @@ $theme-colors: (
   'danger': #ef1f1f,
   'secondary': #57a2e7,
 );
-$link-color: map-get(
-  $map: $theme-colors,
-  $key: primary,
-);
+$link-color: #d545d8;
 
 //
 // Typography from https://startbootstrap.com/theme/new-age/
