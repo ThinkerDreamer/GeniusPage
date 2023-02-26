@@ -1,0 +1,29 @@
+.rainbowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    #ef1f1f 0%,
+    #e52d62 9.36%,
+    #e42f6a 21.35%,
+    #d840be 33.85%,
+    #d545d8 52.6%,
+    #57a2e7 99.99%,
+    #57a2e7 100%
+  );
+  min-height: 0.667vh;
+  padding: 1.35rem;
+  margin: 0 auto;
+  border-radius: 15px;
+  max-width: 90%;
+}
+
+.transparencyOverRainbow {
+  padding: 1.35rem;
+  background: rgba(243, 240, 249, 0.8);
+  border-radius: 15px;
+  text-align: center;
+  min-width: 500px;
+  max-width: 100%;
+}
