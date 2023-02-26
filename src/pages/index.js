@@ -22,7 +22,7 @@ const SignUpButton = () => {
 };
 
 // TODO: Integrate Clerk logged in hook
-const isUserLoggedIn = false;
+const isUserLoggedIn = true;
 
 // Once ready to deploy, remove Future Home stuff
 const showFutureHome = false;
@@ -54,7 +54,7 @@ export default function Home() {
                 GeniusPage
               </Navbar.Brand>
               <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav>
+                <Nav className="me-auto">
                   {/* If user is logged in, show sites bar, map over user's sites,
                   if no sites, show create new site button */}
                   {isUserLoggedIn && (
@@ -90,12 +90,12 @@ export default function Home() {
             </div>
           )}
           <div className={styles.description}>
-            <p>
+            <p style={{ fontWeight: 600 }}>
               GeniusPage is an AI-powered landing page builder that
               helps users quickly and easily create beautiful and
               effective landing pages for their websites.
             </p>
-            <p>
+            <p style={{ fontWeight: 600 }}>
               By leveraging the power of artificial intelligence and
               machine learning, GeniusPage provides a user-friendly
               interface that allows users to customize their pages
