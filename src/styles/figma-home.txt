@@ -1,0 +1,428 @@
+
+
+/* background */
+
+position: absolute;
+width: 1440px;
+height: 1024px;
+left: 0px;
+top: 0px;
+background: #f3f0f9;
+
+/* Container w/Transparenry */
+
+position: absolute;
+width: 1067px;
+height: 622px;
+left: 192px;
+top: 334px;
+
+/* rainbow Container */
+
+position: absolute;
+width: 1067px;
+height: 622px;
+left: 192px;
+top: 334px;
+
+background: linear-gradient(
+  180deg,
+  #ef1f1f 0%,
+  #e52d62 9.36%,
+  #e42f6a 21.35%,
+  #d840be 33.85%,
+  #d545d8 52.6%,
+  #57a2e7 99.99%,
+  #57a2e7 100%
+);
+mix-blend-mode: normal;
+border-radius: 15px;
+
+/* transparency */
+
+position: absolute;
+width: 988.19px;
+height: 568.67px;
+left: 231.41px;
+top: 361.01px;
+
+background: rgba(243, 240, 249, 0.8);
+border-radius: 15px;
+
+/* Need an idea? Here are some examples! */
+
+position: absolute;
+width: 483px;
+height: 24px;
+left: 487px;
+top: 758px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+
+color: #271254;
+
+/* textbox */
+
+position: absolute;
+width: 607px;
+height: 273px;
+left: 416px;
+top: 472px;
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 607px;
+height: 273px;
+left: 416px;
+top: 472px;
+
+background: #ffffff;
+border-radius: 15px;
+
+/* Put your startup idea here! */
+
+position: absolute;
+width: 570px;
+height: 245px;
+left: 435px;
+top: 485px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #271254;
+
+/* Generate Button */
+
+position: absolute;
+width: 270px;
+height: 108px;
+left: 585px;
+top: 809px;
+
+/* Button Generator */
+
+position: absolute;
+width: 270px;
+height: 108px;
+left: 585px;
+top: 809px;
+
+background: #7447d7;
+border-radius: 15px;
+
+/* Generate! */
+
+position: absolute;
+width: 223.58px;
+height: 51.84px;
+left: 631.42px;
+top: 837.08px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #ffffff;
+
+/* 🦆 icon "Brain" */
+
+position: absolute;
+width: 38.08px;
+height: 43.45px;
+left: 604.89px;
+top: 832.76px;
+
+/* Group */
+
+position: absolute;
+left: 42.01%;
+right: 55.35%;
+top: 81.32%;
+bottom: 14.43%;
+
+/* Vector */
+
+position: absolute;
+left: 42.01%;
+right: 55.35%;
+top: 81.32%;
+bottom: 15.41%;
+
+background: #ffffff;
+
+/* Vector */
+
+position: absolute;
+left: 42.67%;
+right: 56.74%;
+top: 84.86%;
+bottom: 14.9%;
+
+background: #ffffff;
+
+/* Vector */
+
+position: absolute;
+left: 42.67%;
+right: 56.74%;
+top: 85.33%;
+bottom: 14.43%;
+
+background: #ffffff;
+
+/* User_cicrle_duotone */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 1387px;
+top: 26px;
+
+/* Rectangle 1 */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Duotone */
+background: rgba(126, 134, 158, 0.25);
+border-radius: 52px;
+
+/* Ellipse 46 */
+
+position: absolute;
+left: 33.33%;
+right: 33.33%;
+top: 25%;
+bottom: 41.67%;
+
+/* fill_icon */
+background: #222222;
+
+/* Intersect */
+
+position: absolute;
+width: 20.93px;
+height: 10px;
+left: 9.53px;
+top: 25px;
+
+/* fill_icon */
+background: #222222;
+border-radius: 0.25px;
+
+/* Rectangle 2 */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+/* Duotone */
+background: rgba(126, 134, 158, 0.25);
+border-radius: 20px;
+
+/* Ellipse 45 */
+
+position: absolute;
+left: 20.83%;
+right: 20.83%;
+top: 62.5%;
+bottom: -12.5%;
+
+/* fill_icon */
+background: #222222;
+
+/* By leveraging the power of artificial intelligence and machine learning, GeniusPage provides a user-friendly interface that allows users to customize their pages with ease. */
+
+position: absolute;
+width: 1096px;
+height: 70px;
+left: 173px;
+top: 213px;
+
+font-family: 'JejuGothic';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 35px;
+/* or 146% */
+text-align: center;
+
+color: #271254;
+
+/* GeniusPage is an AI-powered landing page builder that helps users quickly and easily create beautiful and effective landing pages for their websites. */
+
+position: absolute;
+width: 1085px;
+height: 17px;
+left: 178px;
+top: 115px;
+
+font-family: 'JejuGothic';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 35px;
+/* or 146% */
+text-align: center;
+
+color: #271254;
+
+/* Login */
+
+position: absolute;
+width: 52px;
+height: 24px;
+left: 1321px;
+top: 34px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #271254;
+
+/* GeniusPage */
+
+position: absolute;
+width: 113px;
+height: 24px;
+left: 73px;
+top: 34px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #271254;
+
+/* GeniusPage Logo */
+
+position: absolute;
+width: 61px;
+height: 67px;
+left: 12px;
+top: 12px;
+
+/* brain */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 12px;
+top: 12px;
+
+/* brain */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 12px;
+top: 12px;
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 12.5%;
+bottom: 12.5%;
+
+border: 1.5px solid #271254;
+
+/* Vector */
+
+position: absolute;
+left: 36.25%;
+right: 50.68%;
+top: 41.67%;
+bottom: 49.29%;
+
+border: 1.5px solid #271254;
+
+/* webdesign */
+
+position: absolute;
+width: 32px;
+height: 32px;
+left: 41px;
+top: 47px;
+
+/* web-design-02 */
+
+position: absolute;
+width: 32px;
+height: 32px;
+left: 41px;
+top: 47px;
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 16.67%;
+top: 8.33%;
+bottom: 25%;
+
+border: 1.5px solid #271254;
+
+/* Vector */
+
+position: absolute;
+left: 33.33%;
+right: 8.33%;
+top: 54.17%;
+bottom: 8.33%;
+
+border: 1.5px solid #271254;
+
+/* Vector */
+
+position: absolute;
+left: 68.75%;
+right: 25%;
+top: 66.67%;
+bottom: 20.83%;
+
+border: 1.5px solid #271254;
+
+/* Vector */
+
+position: absolute;
+left: 50%;
+right: 43.75%;
+top: 66.67%;
+bottom: 20.83%;
+
+border: 1.5px solid #271254;
+
+/* Vector */
+
+position: absolute;
+left: 10.42%;
+right: 18.75%;
+top: 25%;
+bottom: 75%;
+
+border: 1.5px solid #271254;

@@ -1,12 +1,19 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '@/styles/Home.module.css';
 import { useClerk } from '@clerk/clerk-react';
-import { Button } from 'react-bootstrap';
-
-const inter = Inter({ subsets: ['latin'] });
-// const rightArrow = `&#10132;`;
+import {
+  Button,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Container,
+  Form,
+  FloatingLabel,
+} from 'react-bootstrap';
+import { Page } from '@geist-ui/core';
+import RainbowContainer from '@/components/RainbowContainer';
+import GPLogo from '@/components/GPLogo';
 
 const SignUpButton = () => {
   const { openSignUp } = useClerk();
@@ -14,108 +21,126 @@ const SignUpButton = () => {
   return <Button onClick={openSignUp}>Sign up</Button>;
 };
 
+// TODO: Integrate Clerk logged in hook
+const isUserLoggedIn = true;
+
+// Once ready to deploy, remove Future Home stuff
+const showFutureHome = false;
+
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>GeniusPage - AI Generated Landing Pages</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <Page.Header>
+        <Navbar>
+          <Container fluid>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Brand href="#home">
+              <img
+                src="/logo-dark.svg"
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+                alt="GeniusPage Logo"
+              />{' '}
+              GeniusPage
+            </Navbar.Brand>
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                {/* If user is logged in, show sites bar, map over user's sites,
+                  if no sites, show create new site button */}
+                {isUserLoggedIn && (
+                  <NavDropdown
+                    title="Sites"
+                    id="collasible-nav-dropdown"
+                  >
+                    <NavDropdown.Item href="#action/3.1">
+                      Site #1
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.2">
+                      Site #2
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.3">
+                      Site #3
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                )}
+              </Nav>
+              <Nav>
+                <Nav.Link href="/login">Login</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        {showFutureHome && (
+          <div>
+            <h2>Future Home of GeniusPage</h2>
+            <GPLogo />
+          </div>
+        )}
         <div className={styles.description}>
-          <h2>Future Home of GeniusPage</h2>
+          <p style={{ fontWeight: 600 }}>
+            GeniusPage is an AI-powered landing page builder that
+            helps users quickly and easily create beautiful and
+            effective landing pages for their websites.
+          </p>
+          <p style={{ fontWeight: 600 }}>
+            By leveraging the power of artificial intelligence and
+            machine learning, GeniusPage provides a user-friendly
+            interface that allows users to customize their pages with
+            ease.
+          </p>
         </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
+      </Page.Header>
+      <RainbowContainer>
+        <Form
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            margin: '0 auto',
+          }}
+        >
+          <FloatingLabel
+            controlId="floatingTextarea"
+            label="Put your startup idea here!"
+          >
+            <Form.Control
+              as="textarea"
+              placeholder="Put your startup idea here!"
+              style={{ height: '200px', width: '400px' }}
             />
-          </div>
-        </div>
-        {SignUpButton()}
-        <div className={styles.grid}>
-          <div className={styles.card}>
-            <a
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Docs <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Find in-depth information about Next.js features
-              and&nbsp;API.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Learn <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Learn about Next.js in an interactive course
-              with&nbsp;quizzes!
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Templates <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Discover and deploy boilerplate example
-              Next.js&nbsp;projects.
-            </p>
-          </div>
-
-          <div className={styles.card}>
-            <a
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Deploy <span>&#10132;</span>
-              </h2>
-            </a>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </div>
-        </div>
-      </main>
+          </FloatingLabel>
+          <p>
+            Need an idea? <a href="#">Here are some examples!</a>
+          </p>
+          <Button>
+            <Image
+              src="/lightbulb-white.png"
+              width={30}
+              height={30}
+              className={styles.lightbulbIcon}
+            />{' '}
+            Generate!
+          </Button>
+        </Form>
+      </RainbowContainer>
+      <Page.Footer>
+        <a
+          href="https://www.flaticon.com/free-icons/brain"
+          title="brain icons"
+        >
+          Brain icons created by Freepik - Flaticon
+        </a>
+      </Page.Footer>
     </>
   );
 }

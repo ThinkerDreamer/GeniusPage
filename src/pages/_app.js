@@ -1,10 +1,11 @@
-import '@/styles/globals.css';
+//import '@/styles/globals.css';
 import './App.scss';
 import { ClerkProvider } from '@clerk/clerk-react';
-import { Inter } from '@next/font/google';
+import { Dosis } from '@next/font/google';
 import SSRProvider from 'react-bootstrap/SSRProvider';
+import { GeistProvider, CssBaseline } from '@geist-ui/core';
 
-const inter = Inter({ subsets: ['latin'] });
+const dosis = Dosis({ subsets: ['latin'] });
 
 function App({ Component, pageProps }) {
   return (
@@ -16,12 +17,16 @@ function App({ Component, pageProps }) {
         variables: {
           colorPrimary: '#7447D7',
           colorText: '#271254',
-          fontFamily: inter.style.fontFamily,
+          fontFamily: dosis.style.fontFamily,
         },
       }}
     >
       <SSRProvider>
-        <Component {...pageProps} />
+        <GeistProvider>
+          <main className={dosis.className}>
+            <Component {...pageProps} />
+          </main>
+        </GeistProvider>
       </SSRProvider>
     </ClerkProvider>
   );
