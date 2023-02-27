@@ -74,7 +74,7 @@ export default function Home() {
                 )}
               </Nav>
               <Nav>
-                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/sign-in">Login</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
