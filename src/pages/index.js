@@ -1,136 +1,54 @@
-import Head from 'next/head';
-import Image from 'next/image';
+import React from 'react';
 import styles from '@/styles/Home.module.css';
-import { useClerk } from '@clerk/clerk-react';
-import {
-  Button,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Container,
-  Form,
-  FloatingLabel,
-} from 'react-bootstrap';
+import { useClerk, useAuth } from '@clerk/clerk-react';
 import { Page } from '@geist-ui/core';
 import RainbowContainer from '@/components/RainbowContainer';
-
-const SignUpButton = () => {
-  const { openSignUp } = useClerk();
-
-  return <Button onClick={openSignUp}>Sign up</Button>;
-};
-
-// TODO: Integrate Clerk logged in hook
-const isUserLoggedIn = true;
-
-  // TODO: Actually handle submitting idea to the backend
-  function handleGenerateSubmit(e) {
-    e.preventDefault();
-    console.log('button clicked');
-    //console.log(`userId is ${userId}`);
-    // const formData = new FormData(e.target);
-    // const ideaSubmitted = formData.get('ideaTextArea');
+import NavBar from '@/components/NavBar';
+import StartUpIdeaForm from '@/components/StartUpIdeaForm';
 
 export default function Home() {
+  const { isSignedIn, userId } = useAuth();
+  const { openSignUp } = useClerk();
+
+  // TODO: Actually handle submitting idea to the backend
+  async function handleGenerateSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const ideaSubmitted = formData.get('ideaTextArea');
+
+    if (!isSignedIn) {
+      openSignUp({ afterSignInUrl: '/loading' });
+    }
+    if (isSignedIn) {
+      console.log(`userId is ${userId}`);
+    }
+    alert(`${ideaSubmitted}? That's a great idea!`);
+  }
+
   return (
     <>
-      <Head>
-        <title>GeniusPage - AI Generated Landing Pages</title>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Page.Header>
-        <Navbar>
-          <Container fluid>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Brand href="#home">
-              <img
-                src="/logo-dark.svg"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="GeniusPage Logo"
-              />{' '}
-              GeniusPage
-            </Navbar.Brand>
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto">
-                {/* If user is logged in, show sites bar, map over user's sites,
-                  if no sites, show create new site button */}
-                {isUserLoggedIn && (
-                  <NavDropdown
-                    title="Sites"
-                    id="collasible-nav-dropdown"
-                  >
-                    <NavDropdown.Item href="#action/3.1">
-                      Site #1
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      Site #2
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                      Site #3
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                )}
-              </Nav>
-              <Nav>
-                <Nav.Link href="/sign-in">Login</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-        <div className={styles.description}>
-          <p style={{ fontWeight: 600 }}>
-            GeniusPage is an AI-powered landing page builder that
-            helps users quickly and easily create beautiful and
-            effective landing pages for their websites.
-          </p>
-          <p style={{ fontWeight: 600 }}>
-            By leveraging the power of artificial intelligence and
-            machine learning, GeniusPage provides a user-friendly
-            interface that allows users to customize their pages with
-            ease.
-          </p>
-        </div>
+        <NavBar isUserLoggedIn={isSignedIn} />
+        {!isSignedIn && (
+          <div className={styles.description}>
+            <p style={{ fontWeight: 600 }}>
+              GeniusPage is an AI-powered landing page builder that
+              helps users quickly and easily create beautiful and
+              effective landing pages for their websites.
+            </p>
+            <p style={{ fontWeight: 600 }}>
+              By leveraging the power of artificial intelligence and
+              machine learning, GeniusPage provides a user-friendly
+              interface that allows users to customize their pages
+              with ease.
+            </p>
+          </div>
+        )}
       </Page.Header>
       <RainbowContainer>
-        <Form
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            margin: '0 auto',
-          }}
-        >
-          <FloatingLabel
-            controlId="floatingTextarea"
-            label="Put your startup idea here!"
-          >
-            <Form.Control
-              as="textarea"
-              placeholder="Put your startup idea here!"
-              style={{ height: '200px', width: '400px' }}
-            />
-          </FloatingLabel>
-          <p>
-            Need an idea? <a href="#">Here are some examples!</a>
-          </p>
-          <Button>
-            <Image
-              src="/lightbulb-white.png"
-              width={30}
-              height={30}
-              className={styles.lightbulbIcon}
-              alt="a brain/lightbulb icon for the Generate button"
-            />{' '}
-            Generate!
-          </Button>
-        </Form>
+        <StartUpIdeaForm
+          handleGenerateSubmit={handleGenerateSubmit}
+        />
       </RainbowContainer>
       <Page.Footer>
         <a
