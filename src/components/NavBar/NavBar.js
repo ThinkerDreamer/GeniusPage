@@ -1,3 +1,4 @@
+import { UserButton } from '@clerk/nextjs';
 import React from 'react';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
@@ -36,7 +37,7 @@ function NavBar({ isUserLoggedIn }) {
           </Nav>
           <Nav>
             {isUserLoggedIn ? (
-              <Nav.Link href="/sign-out">Logout</Nav.Link>
+              <UserButton />
             ) : (
               <Nav.Link href="/sign-in">Login</Nav.Link>
             )}
