@@ -5,7 +5,9 @@ import styles from '@/styles/StartUpIdeaForm.module.css';
 function StartUpIdeaForm({ handleGenerateSubmit }) {
   return (
     <Form
-      onSubmit={handleGenerateSubmit}
+      onSubmit={
+        handleGenerateSubmit
+      }
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -27,7 +29,7 @@ function StartUpIdeaForm({ handleGenerateSubmit }) {
       <p>
         Need an idea? <a href="#">Here are some examples!</a>
       </p>
-      <Button>
+      <Button type="submit">
         <Image
           src="/lightbulb-white.png"
           width={30}
