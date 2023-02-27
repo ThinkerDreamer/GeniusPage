@@ -128,6 +128,7 @@ export default function Home() {
               width={30}
               height={30}
               className={styles.lightbulbIcon}
+              alt="a brain/lightbulb icon for the Generate button"
             />{' '}
             Generate!
           </Button>
