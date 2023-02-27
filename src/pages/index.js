@@ -13,7 +13,6 @@ import {
 } from 'react-bootstrap';
 import { Page } from '@geist-ui/core';
 import RainbowContainer from '@/components/RainbowContainer';
-import GPLogo from '@/components/GPLogo';
 
 const SignUpButton = () => {
   const { openSignUp } = useClerk();
@@ -24,8 +23,13 @@ const SignUpButton = () => {
 // TODO: Integrate Clerk logged in hook
 const isUserLoggedIn = true;
 
-// Once ready to deploy, remove Future Home stuff
-const showFutureHome = false;
+  // TODO: Actually handle submitting idea to the backend
+  function handleGenerateSubmit(e) {
+    e.preventDefault();
+    console.log('button clicked');
+    //console.log(`userId is ${userId}`);
+    // const formData = new FormData(e.target);
+    // const ideaSubmitted = formData.get('ideaTextArea');
 
 export default function Home() {
   return (
@@ -80,12 +84,6 @@ export default function Home() {
           </Container>
         </Navbar>
 
-        {showFutureHome && (
-          <div>
-            <h2>Future Home of GeniusPage</h2>
-            <GPLogo />
-          </div>
-        )}
         <div className={styles.description}>
           <p style={{ fontWeight: 600 }}>
             GeniusPage is an AI-powered landing page builder that
