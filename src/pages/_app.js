@@ -3,7 +3,9 @@ import './App.scss';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { Dosis } from '@next/font/google';
 import SSRProvider from 'react-bootstrap/SSRProvider';
-import { GeistProvider, CssBaseline } from '@geist-ui/core';
+import { GeistProvider } from '@geist-ui/core';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const dosis = Dosis({ subsets: ['latin'] });
 
@@ -24,7 +26,16 @@ function App({ Component, pageProps }) {
       <SSRProvider>
         <GeistProvider>
           <main className={dosis.className}>
-            <Component {...pageProps} />
+            <Component {...pageProps}>
+              <Head>
+                <title>GeniusPage - AI Generated Landing Pages</title>
+                <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1"
+                />
+                <link rel="icon" href="/favicon.ico" />
+              </Head>
+            </Component>
           </main>
         </GeistProvider>
       </SSRProvider>
