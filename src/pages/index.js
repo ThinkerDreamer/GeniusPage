@@ -1,10 +1,15 @@
 import React from 'react';
 import styles from '@/styles/Home.module.css';
-import { useClerk, useAuth } from '@clerk/clerk-react';
 import { Page } from '@geist-ui/core';
-import RainbowContainer from '@/components/RainbowContainer';
 import NavBar from '@/components/NavBar';
+import RainbowContainer from '@/components/RainbowContainer';
 import StartUpIdeaForm from '@/components/StartUpIdeaForm';
+import { useClerk, useAuth } from '@clerk/clerk-react';
+import {
+  getAuth,
+  clerkClient,
+  buildClerkProps,
+} from '@clerk/nextjs/server';
 
 export default function Home() {
   const { isSignedIn, userId } = useAuth();
@@ -61,3 +66,13 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async ({ req }) => {
+  const { userId } = getAuth(req);
+  const user = userId
+    ? await clerkClient.users.getUser(userId)
+    : undefined;
+  // ...
+
+  return { props: { ...buildClerkProps(req, { user }) } };
+};
