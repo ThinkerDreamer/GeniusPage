@@ -53,7 +53,6 @@ function StartUpIdeaForm({ handleGenerateSubmit }) {
         <Form.Control
           as="textarea"
           name="ideaTextArea"
-          id="ideaTextArea"
           value={ideaValue}
           onChange={(e) => setIdeaValue(e.target.value)}
           placeholder="Put your startup idea here!"
