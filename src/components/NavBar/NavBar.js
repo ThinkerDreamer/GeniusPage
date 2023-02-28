@@ -1,6 +1,7 @@
 import { UserButton } from '@clerk/nextjs';
 import React from 'react';
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import Image from 'next/image';
 
 function NavBar({ isUserLoggedIn }) {
   return (
@@ -8,7 +9,7 @@ function NavBar({ isUserLoggedIn }) {
       <Container fluid>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Brand href="#home">
-          <img
+          <Image
             src="/logo-dark.svg"
             width="30"
             height="30"
@@ -37,7 +38,10 @@ function NavBar({ isUserLoggedIn }) {
           </Nav>
           <Nav>
             {isUserLoggedIn ? (
-              <UserButton />
+              <>
+                <Nav.Link href="/dashboard">Dashboard</Nav.Link>{' '}
+                <UserButton />
+              </>
             ) : (
               <Nav.Link href="/sign-in">Login</Nav.Link>
             )}
