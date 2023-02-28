@@ -1,9 +1,9 @@
-import { SignIn } from '@clerk/clerk-react';
+import { SignUp } from '@clerk/clerk-react';
 import { Container } from 'react-bootstrap';
 
 // Render the sign in component in your
 // custom sign in page.
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <Container
       style={{
@@ -12,7 +12,7 @@ export default function SignInPage() {
         maxWidth: '90%',
       }}
     >
-      <SignIn />
+      <SignUp path="/sign-up" routing="path" signInUrl="/sign-in" />
     </Container>
   );
 }
