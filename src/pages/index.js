@@ -10,10 +10,12 @@ import {
   clerkClient,
   buildClerkProps,
 } from '@clerk/nextjs/server';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const { isSignedIn, userId } = useAuth();
   const { openSignUp } = useClerk();
+  const router = useRouter();
 
   // TODO: Actually handle submitting idea to the backend
   async function handleGenerateSubmit(e) {
@@ -22,10 +24,16 @@ export default function Home() {
     const ideaSubmitted = formData.get('ideaTextArea');
 
     if (!isSignedIn) {
-      openSignUp({ afterSignInUrl: '/loading' });
+      openSignUp({
+        afterSignUpUrl: `/loading?idea=${ideaSubmitted}`,
+      });
     }
     if (isSignedIn) {
       console.log(`userId is ${userId}`);
+      router.push({
+        pathname: '/loading',
+        query: { idea: ideaSubmitted },
+      });
     }
     alert(`${ideaSubmitted}? That's a great idea!`);
   }
@@ -72,7 +80,6 @@ export const getServerSideProps = async ({ req }) => {
   const user = userId
     ? await clerkClient.users.getUser(userId)
     : undefined;
-  // ...
 
   return { props: { ...buildClerkProps(req, { user }) } };
 };
