@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/styles/Home.module.css';
+//import styles from '@/styles/Home.module.css'; //no styles currently used
 import { Page } from '@geist-ui/core';
 import NavBar from '@/components/NavBar';
 import RainbowContainer from '@/components/RainbowContainer';

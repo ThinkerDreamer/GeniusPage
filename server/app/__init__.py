@@ -62,13 +62,13 @@ def request_landing_page():
     return jsonify({'response': query})
 
 #Generate text and image fot the landing page
-@app.route("/generate-ideia", methods=['POST'])
+@app.route("/generate-idea", methods=['POST'])
 def generate_landing_page_infos():
     data = request.get_json()
     data = data['text']
 
     tagline = f"Write a tagline sentence for a {data}, maximum 20 characters and without period."
-    advertising_text = f"Write a advertising text for a {data}, maximum two sentence, less than 100 characters and without period."
+    advertising_text = f"Write an advertising text for a {data}, maximum two sentence, less than 100 characters and without period."
     business_name = f"Write a business name of one word for a {data}, maximum 10 characters"
     review = f"Write a review sentence praising service about {data}, maximum 35 characters"
 
@@ -100,7 +100,7 @@ def generate_landing_page_infos():
     response['review'] = openai.Completion.create(engine='text-davinci-001', prompt=review, max_tokens=25)
     response['review'] = response["review"]['choices'][0]['text']
 
-    response['ideia'] = data['text']
+    response['idea'] = data['text']
     response['id_landing_page'] = 2
 
     data = LandingPage(**response)
