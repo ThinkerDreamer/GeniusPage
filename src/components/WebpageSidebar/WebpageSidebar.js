@@ -1,45 +1,60 @@
 import React from 'react';
 import { Stack, Card, Form } from 'react-bootstrap';
 
-function WebpageSidebar() {
+function WebpageSidebar({ startUpData }) {
+  const [startupName, setStartupName] = React.useState(
+    startUpData?.name || 'Your Startup Name'
+  );
+  const [startupTagline, setStartupTagline] = React.useState(
+    startUpData?.tagline || 'Your Startup Tagline'
+  );
+
   return (
-    <Stack gap={3}>
-      <Card
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          padding: '0.5rem',
-        }}
-      >
-        <Card.Title>Title</Card.Title>
-        <Card.Text>Your Startup Name</Card.Text>
-      </Card>
-      <Card
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          padding: '0.5rem',
-        }}
-      >
-        <Card.Title>Tagline</Card.Title>
-        <Card.Text>
-          Some quick example text that says how great your startup is.
-        </Card.Text>
-      </Card>
-      <Card
-        style={{
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          padding: '0.5rem',
-        }}
-      >
-        <Card.Title>Image</Card.Title>
-        <Form.Control type="file" style={{ fontSize: '0.8rem' }} />
-      </Card>
-    </Stack>
+    <Form>
+      <Stack gap={2}>
+        <Card>
+          <Card.Header style={{ padding: '0.5rem' }}>
+            <Card.Title style={{ marginBottom: 0 }}>Title</Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Card.Text>
+              <Form.Control
+                type="text"
+                value={startupName}
+                onChange={(e) => setStartupName(e.target.value)}
+              ></Form.Control>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Header style={{ padding: '0.5rem' }}>
+            <Card.Title style={{ marginBottom: 0 }}>
+              Tagline
+            </Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Card.Text>
+              <Form.Control
+                type="textArea"
+                value={startupTagline}
+                onChange={(e) => setStartupTagline(e.target.value)}
+              ></Form.Control>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Header style={{ padding: '0.5rem' }}>
+            <Card.Title style={{ marginBottom: 0 }}>Image</Card.Title>
+          </Card.Header>
+          <Card.Body>
+            <Form.Control
+              type="file"
+              style={{ fontSize: '0.8rem' }}
+            />
+          </Card.Body>
+        </Card>
+      </Stack>
+    </Form>
   );
 }
 
