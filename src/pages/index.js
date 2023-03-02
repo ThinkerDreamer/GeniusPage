@@ -4,6 +4,7 @@ import { Page } from '@geist-ui/core';
 import NavBar from '@/components/NavBar';
 import RainbowContainer from '@/components/RainbowContainer';
 import StartUpIdeaForm from '@/components/StartUpIdeaForm';
+import TopDescription from '@/components/TopDescription';
 import { useClerk, useAuth } from '@clerk/clerk-react';
 import {
   getAuth,
@@ -42,21 +43,7 @@ export default function Home() {
     <>
       <Page.Header>
         <NavBar isUserLoggedIn={isSignedIn} />
-        {!isSignedIn && (
-          <div className={styles.description}>
-            <p style={{ fontWeight: 600 }}>
-              GeniusPage is an AI-powered landing page builder that
-              helps users quickly and easily create beautiful and
-              effective landing pages for their websites.
-            </p>
-            <p style={{ fontWeight: 600 }}>
-              By leveraging the power of artificial intelligence and
-              machine learning, GeniusPage provides a user-friendly
-              interface that allows users to customize their pages
-              with ease.
-            </p>
-          </div>
-        )}
+        {!isSignedIn && <TopDescription />}
       </Page.Header>
       <RainbowContainer>
         <StartUpIdeaForm
