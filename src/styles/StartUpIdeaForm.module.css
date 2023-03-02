@@ -1,3 +1,41 @@
 .lightbulbIcon {
   vertical-align: text-bottom;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.Col {
+  width: 100%;
+}
+
+.needAnIdea {
+  margin-bottom: 0.25rem;
+}
+
+.Link {
+  display: block;
+}
+
+@media screen and (min-width: 700px) {
+  .form,
+  .floating {
+    width: 500px;
+  }
+
+  .needAnIdea {
+    display: inline;
+  }
+
+  .Link {
+    display: inline;
+  }
+
+  .Col {
+    width: auto;
+  }
+}

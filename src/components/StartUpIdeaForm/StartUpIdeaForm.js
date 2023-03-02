@@ -1,5 +1,11 @@
 import React from 'react';
-import { Button, Form, FloatingLabel, Image } from 'react-bootstrap';
+import {
+  Button,
+  Form,
+  FloatingLabel,
+  Image,
+  Col,
+} from 'react-bootstrap';
 import styles from '@/styles/StartUpIdeaForm.module.css';
 import Link from 'next/link';
 
@@ -39,31 +45,33 @@ function StartUpIdeaForm({ handleGenerateSubmit }) {
   return (
     <Form
       onSubmit={handleGenerateSubmit}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        margin: '0 auto',
-      }}
+      style={{}}
+      className={styles.form}
     >
-      <FloatingLabel
-        controlId="floatingTextarea"
-        label="Put your startup idea here!"
-      >
-        <Form.Control
-          as="textarea"
-          name="ideaTextArea"
-          value={ideaValue}
-          onChange={(e) => setIdeaValue(e.target.value)}
-          placeholder="Put your startup idea here!"
-          style={{ height: '200px', width: '400px' }}
-        />
-      </FloatingLabel>
-      <p>
+      {' '}
+      <Col xs="auto" className={styles.Col}>
+        <FloatingLabel
+          controlId="floatingTextarea"
+          label="Put your startup idea here!"
+          className={styles.floating}
+        >
+          <Form.Control
+            as="textarea"
+            name="ideaTextArea"
+            value={ideaValue}
+            onChange={(e) => setIdeaValue(e.target.value)}
+            placeholder="Put your startup idea here!"
+            style={{ height: '200px' }}
+          />
+        </FloatingLabel>
+      </Col>
+      <p className={styles.needAnIdea}>
         Need an idea?{' '}
         <Link
           href="#"
           onClick={() => insertRandomIdea(randomIdeas, setIdeaValue)}
+          style={{ marginTop: '0', marginBottom: '1rem' }}
+          className={styles.Link}
         >
           Here are some examples!
         </Link>
