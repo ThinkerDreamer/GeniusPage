@@ -12,28 +12,41 @@ export default function LoadingPage() {
   // setTimeout(() => {
   //   router.push({ pathname: '/dashboard', query: { idea: idea } });
   // }, 3000);
+
+  //2a09:8280:1::1:f0f7
   React.useEffect(() => {
-    const postIdea = async function (idea) {
-      setStatus('loading');
-      const url = new URL('/api/generate-idea', location.href);
+    async function postIdea(idea) {
+      //const res = await fetch(`https://[2a09:8280:1::1:f0f7]/hello`);
+
+      // setStatus('loading');
+      // //const url = new URL('/api/generate-idea', location.href);
       const jsonObject = {
         text: idea,
       };
-      const endPoint = url;
-      const options = {
-        method: 'POST',
-        body: jsonObject,
-      };
-      const response = await fetch(endPoint, options);
+      // const endPoint = 'https://geniuspage.fly.dev/hello';
+      const endPoint = `https://[2a09:8280:1::1:f0f7]/hello`;
+      // const options = {
+      //   method: 'POST',
+      //   headers: {
+      //     'content-type': 'application/json',
+      //   },
+      //   body: JSON.stringify(jsonObject),
+      //   //body: jsonObject,
+      // };
+      //console.log(options);
+      //const response = await fetch(endPoint, options);
+      const response = await fetch(endPoint);
       const result = await response.json();
-      if (!result.ok) {
-        setStatus('error');
-      } else {
-        setStatus('success');
-      }
-    };
+      console.log(result);
+      // if (!result.ok) {
+      //   setStatus('error');
+      // } else {
+      //   setStatus('success');
+      // }
+    }
 
-    postIdea();
+    postIdea(idea);
+    console.log(status);
   }, []);
 
   return (
