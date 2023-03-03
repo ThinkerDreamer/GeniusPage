@@ -1,4 +1,3 @@
-import logging
 from flask import Flask
 from flask import request, jsonify
 from flask_cors import *
@@ -74,7 +73,8 @@ def request_landing_page():
 @app.route("/generate-idea", methods=['POST'])
 def generate_landing_page_infos():
     data = request.get_json()
-    data = data['text']
+    # data = data['text']
+    original_data = data
 
     tagline = f"Write a tagline sentence for a {data}, maximum 20 characters and without period."
     advertising_text = f"Write an advertising text for a {data}, maximum two sentence, less than 100 characters and without period."
@@ -83,40 +83,41 @@ def generate_landing_page_infos():
 
     response = {}
 
-    response["business_name"] = openai.Completion.create(engine='text-davinci-001', prompt=business_name, max_tokens=8)
-    response["business_name"] = response["business_name"]['choices'][0]['text']
+    # response["business_name"] = openai.Completion.create(engine='text-davinci-001', prompt=business_name, max_tokens=8)
+    # response["business_name"] = response["business_name"]['choices'][0]['text']
 
-    response["tagline_1"] = openai.Completion.create(engine='text-davinci-001', prompt=tagline, max_tokens=11)
-    response["tagline_1"] = response["tagline_1"]['choices'][0]['text']
+    # response["tagline_1"] = openai.Completion.create(engine='text-davinci-001', prompt=tagline, max_tokens=11)
+    # response["tagline_1"] = response["tagline_1"]['choices'][0]['text']
     
-    response["tagline_2"] = openai.Completion.create(engine='text-davinci-001', prompt=tagline, max_tokens=11)
-    response["tagline_2"] = response["tagline_2"]['choices'][0]['text']
+    # response["tagline_2"] = openai.Completion.create(engine='text-davinci-001', prompt=tagline, max_tokens=11)
+    # response["tagline_2"] = response["tagline_2"]['choices'][0]['text']
 
-    response["tagline_3"] = openai.Completion.create(engine='text-davinci-001', prompt=tagline, max_tokens=11)
-    response["tagline_3"] = response["tagline_3"]['choices'][0]['text']
+    # response["tagline_3"] = openai.Completion.create(engine='text-davinci-001', prompt=tagline, max_tokens=11)
+    # response["tagline_3"] = response["tagline_3"]['choices'][0]['text']
 
-    response["advertising_text_1"] = openai.Completion.create(engine='text-davinci-001', prompt=advertising_text, max_tokens=40)
-    response["advertising_text_1"] = response["advertising_text_1"]['choices'][0]['text']
+    # response["advertising_text_1"] = openai.Completion.create(engine='text-davinci-001', prompt=advertising_text, max_tokens=40)
+    # response["advertising_text_1"] = response["advertising_text_1"]['choices'][0]['text']
 
-    advertising_text_2 = f"Write a advertising text with maximum of two sentence and less than 100 characters based on this phrase: {response['tagline_2']}"
-    response["advertising_text_2"] = openai.Completion.create(engine='text-davinci-001', prompt=advertising_text_2, max_tokens=40)
-    response["advertising_text_2"] = response["advertising_text_2"]['choices'][0]['text']
+    # advertising_text_2 = f"Write a advertising text with maximum of two sentence and less than 100 characters based on this phrase: {response['tagline_2']}"
+    # response["advertising_text_2"] = openai.Completion.create(engine='text-davinci-001', prompt=advertising_text_2, max_tokens=40)
+    # response["advertising_text_2"] = response["advertising_text_2"]['choices'][0]['text']
 
-    advertising_text_3 = f"Write a advertising with maximum of two sentence and less than 100 characters based on this phrase: {response['tagline_3']}"
-    response["advertising_text_3"] = openai.Completion.create(engine='text-davinci-001', prompt=advertising_text_3, max_tokens=40)
-    response["advertising_text_3"] = response["advertising_text_3"]['choices'][0]['text']
+    # advertising_text_3 = f"Write a advertising with maximum of two sentence and less than 100 characters based on this phrase: {response['tagline_3']}"
+    # response["advertising_text_3"] = openai.Completion.create(engine='text-davinci-001', prompt=advertising_text_3, max_tokens=40)
+    # response["advertising_text_3"] = response["advertising_text_3"]['choices'][0]['text']
 
-    response['review'] = openai.Completion.create(engine='text-davinci-001', prompt=review, max_tokens=25)
-    response['review'] = response["review"]['choices'][0]['text']
+    # response['review'] = openai.Completion.create(engine='text-davinci-001', prompt=review, max_tokens=25)
+    # response['review'] = response["review"]['choices'][0]['text']
 
-    response['idea'] = data['text']
-    response['id_landing_page'] = 2
+    # response['idea'] = data['text']
+    # response['id_landing_page'] = 2
 
-    data = LandingPage(**response)
-    session.add(data)
-    session.commit()
+    # data = LandingPage(**response)
+    # session.add(data)
+    # session.commit()
 
-    return jsonify({'response': response})
+    #return jsonify({'response': response})
+    return jsonify({'response': {'status': 'ok', 'data': original_data}})
 
 #Update landing Page infos
 @app.route("/update-land-page", methods=['PUT'])
