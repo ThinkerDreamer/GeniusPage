@@ -23,8 +23,9 @@ export default function LoadingPage() {
       const jsonObject = {
         text: idea,
       };
-      // const endPoint = 'https://geniuspage.fly.dev/hello';
-      const endPoint = `https://[2a09:8280:1::1:f0f7]/hello`;
+      const endPoint = 'https://geniuspage.fly.dev/hello?text=world';
+      //const endPoint = `https://[2a09:8280:1::1:f0f7]/hello`;
+      //const endPoint = `/hello`;
       // const options = {
       //   method: 'POST',
       //   headers: {
