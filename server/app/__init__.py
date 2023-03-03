@@ -1,6 +1,7 @@
+import logging
 from flask import Flask
 from flask import request, jsonify
-from flask_cors import CORS
+from flask_cors import *
 import openai
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -15,9 +16,8 @@ Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
 
-app = Flask(__name__, static_folder='index.html')
-CORS(app)
-
+app = Flask(__name__)
+CORS(app, origins='*')
 
 @dataclass
 class LandingPage(Base):
@@ -51,12 +51,12 @@ class User(Base):
 
 
 #Hello World route for testing with no API key
-@app.route('/hello', methods=['GET', 'POST'])
+@app.route('/hello', methods=['GET'])
+@cross_origin()
 def hello_api():
-    data = request.get_json()
-    data.headers.add('Access-Control-Allow-Origin', '*.vercel.app')
+    data = request.args['text'] or request.args['idea']
     print(data)
-    return {'response': { 'OK': 'true', 'data': data}}
+    return {'response': 'OK'}
 
 
 #Get info of landing page
