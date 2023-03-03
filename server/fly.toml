@@ -35,3 +35,8 @@ processes = []
     restart_limit = 0
     timeout = "2s"
     
+  # https://community.fly.io/t/edge-headers/9278
+  [services.ports.http_options.response.headers]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "*"
+    Access-Control-Allow-Headers = "*"
