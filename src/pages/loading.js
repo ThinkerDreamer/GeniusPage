@@ -13,30 +13,24 @@ export default function LoadingPage() {
   //   router.push({ pathname: '/dashboard', query: { idea: idea } });
   // }, 3000);
 
-  //2a09:8280:1::1:f0f7
   React.useEffect(() => {
     async function postIdea(idea) {
-      //const res = await fetch(`https://[2a09:8280:1::1:f0f7]/hello`);
-
-      // setStatus('loading');
-      // //const url = new URL('/api/generate-idea', location.href);
-      const jsonObject = {
-        text: idea,
-      };
-      const endPoint = 'https://geniuspage.fly.dev/hello?text=world';
-      //const endPoint = `https://[2a09:8280:1::1:f0f7]/hello`;
-      //const endPoint = `/hello`;
-      // const options = {
-      //   method: 'POST',
-      //   headers: {
-      //     'content-type': 'application/json',
-      //   },
-      //   body: JSON.stringify(jsonObject),
-      //   //body: jsonObject,
+      setStatus('loading');
+      // const jsonObject = {
+      //   text: idea,
       // };
-      //console.log(options);
-      //const response = await fetch(endPoint, options);
-      const response = await fetch(endPoint);
+
+      const endPoint = 'https://geniuspage.fly.dev/generate-idea';
+      const options = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idea }),
+        //body: jsonObject,
+      };
+      const response = await fetch(endPoint, options);
       const result = await response.json();
       console.log(result);
       // if (!result.ok) {
@@ -45,9 +39,7 @@ export default function LoadingPage() {
       //   setStatus('success');
       // }
     }
-
     postIdea(idea);
-    console.log(status);
   }, []);
 
   return (
