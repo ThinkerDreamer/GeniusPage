@@ -5,3 +5,4 @@ info.txt
 # Folders
 .vs/
 __pycache__/
+stable/
