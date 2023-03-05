@@ -12,31 +12,67 @@ import {
   buildClerkProps,
 } from '@clerk/nextjs/server';
 import { useRouter } from 'next/router';
+import { UserDataContext } from './_app';
 
 export default function Home() {
   const { isSignedIn, userId } = useAuth();
   const { openSignUp } = useClerk();
   const router = useRouter();
+  const { userData, setUserData } = React.useContext(UserDataContext);
+
+  // idle | loading | success | error
+  const [status, setStatus] = React.useState('idle');
 
   // TODO: Actually handle submitting idea to the backend
   async function handleGenerateSubmit(e) {
     e.preventDefault();
+    setStatus('loading');
     const formData = new FormData(e.target);
     const ideaSubmitted = formData.get('ideaTextArea');
 
-    if (!isSignedIn) {
-      openSignUp({
-        afterSignUpUrl: `/loading?idea=${ideaSubmitted}`,
-      });
+    setUserData({ idea: ideaSubmitted, ...userData });
+    const endPoint = 'https://geniuspage.fly.dev/generate-idea';
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ideaSubmitted }),
+    };
+    const response = await fetch(endPoint, options);
+    const result = await response.json();
+    //console.log(result);
+
+    if (result.response.status === 'ok') {
+      setStatus('success');
+      //console.log(`status is okay: ${status}`);
+      setUserData({ startUpData: result.response.data, ...userData });
+      if (isSignedIn) {
+        router.push('/generatedPage');
+      } else {
+        openSignUp({
+          afterSignUpUrl: '/generatedPage',
+          afterSignInUrl: '/generatedPage',
+        });
+      }
+    } else {
+      setStatus('error');
+      console.error('there was an error fetching data');
     }
-    if (isSignedIn) {
-      console.log(`userId is ${userId}`);
-      router.push({
-        pathname: '/loading',
-        query: { idea: ideaSubmitted },
-      });
-    }
-    alert(`${ideaSubmitted}? That's a great idea!`);
+
+    // if (!isSignedIn) {
+    //   openSignUp({
+    //     afterSignUpUrl: `/loading?idea=${ideaSubmitted}`,
+    //   });
+    // }
+    // if (isSignedIn) {
+    //   console.log(`userId is ${userId}`);
+    //   router.push({
+    //     pathname: '/loading',
+    //     query: { idea: ideaSubmitted },
+    //   });
+    // }
   }
 
   return (
@@ -45,10 +81,14 @@ export default function Home() {
         <NavBar isUserLoggedIn={isSignedIn} />
         {!isSignedIn && <TopDescription />}
       </Page.Header>
+
       <RainbowContainer>
-        <StartUpIdeaForm
-          handleGenerateSubmit={handleGenerateSubmit}
-        />
+        {status === 'idle' && (
+          <StartUpIdeaForm
+            handleGenerateSubmit={handleGenerateSubmit}
+          />
+        )}
+        {status === 'loading' && <h2>Loading...</h2>}
       </RainbowContainer>
       <Page.Footer>
         <a
