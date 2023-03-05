@@ -14,7 +14,7 @@ function WebpageSidebar({ startUpData }) {
       <Stack gap={2}>
         <Card>
           <Card.Header style={{ padding: '0.5rem' }}>
-            <Card.Title style={{ marginBottom: 0 }}>Title</Card.Title>
+            <Card.Title style={{ marginBottom: 0 }}>Name</Card.Title>
           </Card.Header>
           <Card.Body>
             <Card.Text>
