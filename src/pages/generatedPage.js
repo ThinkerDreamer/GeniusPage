@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { Page } from '@geist-ui/core';
 import { useAuth } from '@clerk/clerk-react';
 import NavBar from '@/components/NavBar';
@@ -16,6 +17,13 @@ export default function GeneratedPage() {
   });
   return (
     <>
+      <Head>
+        <script
+          async
+          src="https://kit.fontawesome.com/26456b3d35.js"
+          crossorigin="anonymous"
+        ></script>
+      </Head>
       <Page.Header>
         <NavBar isUserLoggedIn={isSignedIn} />
       </Page.Header>
