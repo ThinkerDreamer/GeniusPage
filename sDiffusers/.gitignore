@@ -1,0 +1,7 @@
+# Files 
+auth_token.py
+info.txt
+
+# Folders
+.vs/
+__pycache__/
