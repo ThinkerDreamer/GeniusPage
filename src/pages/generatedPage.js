@@ -56,18 +56,26 @@ export default function GeneratedPage() {
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',
+                    alignItems: 'center',
                   }}
                 >
-                  <Card.Text>Web Browser</Card.Text>
+                  <Card.Text
+                    style={{ marginBottom: '0', flex: '0 0 auto' }}
+                  >
+                    Web Browser
+                  </Card.Text>
                   <div
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',
+                      width: '15%',
+                      minWidth: '4rem',
                     }}
                   >
+                    {' '}
                     <FontAwesomeIcon icon={faMinus} />{' '}
                     <FontAwesomeIcon icon={faSquareFull} />{' '}
-                    <FontAwesomeIcon icon={faXmark} />
+                    <FontAwesomeIcon icon={faXmark} />{' '}
                   </div>
                 </Card.Header>
                 <Card.Body>
