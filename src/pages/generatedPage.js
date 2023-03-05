@@ -4,6 +4,9 @@ import { useAuth } from '@clerk/clerk-react';
 import NavBar from '@/components/NavBar';
 import WebpageSidebar from '@/components/WebpageSidebar';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareFull } from '@fortawesome/free-regular-svg-icons';
+import { faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function GeneratedPage() {
   const { isSignedIn } = useAuth();
@@ -41,8 +44,23 @@ export default function GeneratedPage() {
               }}
             >
               <Card border="primary" style={{ width: '80%' }}>
-                <Card.Header rtl="true">
-                  Web Browser ➖⬜✖{' '}
+                <Card.Header
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <Card.Text>Web Browser</Card.Text>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faMinus} />{' '}
+                    <FontAwesomeIcon icon={faSquareFull} />{' '}
+                    <FontAwesomeIcon icon={faXmark} />
+                  </div>
                 </Card.Header>
                 <Card.Body>
                   <Card.Title as="h1">{startupData.name}</Card.Title>

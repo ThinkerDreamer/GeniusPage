@@ -5,7 +5,9 @@ import { Dosis } from '@next/font/google';
 import SSRProvider from 'react-bootstrap/SSRProvider';
 import { GeistProvider } from '@geist-ui/core';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+config.autoAddCss = false;
 
 const dosis = Dosis({ subsets: ['latin'] });
 
@@ -34,6 +36,10 @@ function App({ Component, pageProps }) {
                   content="width=device-width, initial-scale=1"
                 />
                 <link rel="icon" href="/favicon.ico" />
+                <script
+                  src="https://kit.fontawesome.com/26456b3d35.js"
+                  crossorigin="anonymous"
+                ></script>
               </Head>
             </Component>
           </main>
