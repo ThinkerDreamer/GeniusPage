@@ -9,12 +9,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFull } from '@fortawesome/free-regular-svg-icons';
 import { faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
 
+import { UserDataContext } from './_app';
+
 export default function GeneratedPage() {
   const { isSignedIn } = useAuth();
-  const [startupData, setStartupData] = React.useState({
+  const { userData, setUserData } = React.useContext(UserDataContext);
+  const startUpData = userData.startUpData || {
     name: 'Your Startup Name',
-    tagline: 'We get things done',
-  });
+    tagline: 'We can do it!',
+  };
+  console.log({ startUpData });
   return (
     <>
       <Head>
@@ -39,7 +43,7 @@ export default function GeneratedPage() {
       >
         <Row>
           <Col xs={3}>
-            <WebpageSidebar startUpData={startupData} />
+            <WebpageSidebar startUpData={startUpData} />
           </Col>
           <Col xs={9}>
             <Container
@@ -79,14 +83,14 @@ export default function GeneratedPage() {
                   </div>
                 </Card.Header>
                 <Card.Body>
-                  <Card.Title as="h1">{startupData.name}</Card.Title>
+                  <Card.Title as="h1">{startUpData.name}</Card.Title>
                   <Card.Subtitle
                     style={{
                       textAlign: 'center',
                       margin: '1rem',
                     }}
                   >
-                    {startupData.tagline}
+                    {startUpData.tagline}
                   </Card.Subtitle>
                   <Card.Img
                     src="logo-dark.svg"
