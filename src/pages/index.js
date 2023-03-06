@@ -12,13 +12,15 @@ import {
   buildClerkProps,
 } from '@clerk/nextjs/server';
 import { useRouter } from 'next/router';
-import { UserDataContext } from './_app';
+import { LandingPageContext } from './_app';
 
 export default function Home() {
-  const { isSignedIn, userId } = useAuth();
+  const { isSignedIn } = useAuth();
   const { openSignUp } = useClerk();
   const router = useRouter();
-  const { userData, setUserData } = React.useContext(UserDataContext);
+  const { landingPageData, setLandingPageData } = React.useContext(
+    LandingPageContext
+  );
 
   // idle | loading | success | error
   const [status, setStatus] = React.useState('idle');
@@ -29,8 +31,8 @@ export default function Home() {
     setStatus('loading');
     const formData = new FormData(e.target);
     const ideaSubmitted = formData.get('ideaTextArea');
+    setLandingPageData({ idea: ideaSubmitted, ...landingPageData });
 
-    setUserData({ idea: ideaSubmitted, ...userData });
     const endPoint = 'https://geniuspage.fly.dev/generate-idea';
     const options = {
       method: 'POST',
@@ -40,14 +42,15 @@ export default function Home() {
       },
       body: JSON.stringify({ ideaSubmitted }),
     };
-    const response = await fetch(endPoint, options);
-    const result = await response.json();
+
+    const res = await fetch(endPoint, options);
+    const result = await res.json();
     //console.log(result);
 
     if (result.response.status === 'ok') {
       setStatus('success');
-      //console.log(`status is okay: ${status}`);
-      setUserData({ startUpData: result.response.data, ...userData });
+      const newData = result.response.data;
+      setLandingPageData({ newData, ...landingPageData });
       if (isSignedIn) {
         router.push('/generatedPage');
       } else {

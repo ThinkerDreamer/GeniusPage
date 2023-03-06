@@ -1,12 +1,17 @@
 import React from 'react';
+import Head from 'next/head';
 import Script from 'next/script';
-import { styles } from '../../styles/WebBrowserWindow.module.css';
+import styles from '../../styles/WebBrowserWindow.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFull } from '@fortawesome/free-regular-svg-icons';
 import { faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Container, Card } from 'react-bootstrap';
+import { LandingPageContext } from '../../pages/_app';
 
-function WebBrowserWindow({ startUpData }) {
+function WebBrowserWindow() {
+  const { landingPageData, setLandingPageData } = React.useContext(
+    LandingPageContext
+  );
   const {
     name,
     tagline1,
@@ -19,7 +24,7 @@ function WebBrowserWindow({ startUpData }) {
     image1,
     image2,
     image3,
-  } = { startUpData };
+  } = { landingPageData };
   return (
     <>
       <Head>

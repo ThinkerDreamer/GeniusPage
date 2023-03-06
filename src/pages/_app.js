@@ -11,16 +11,32 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 const dosis = Dosis({ subsets: ['latin'] });
-export const UserDataContext = React.createContext();
+//export const UserDataContext = React.createContext();
+
+// LandingPageContext is an object with all the generated data for a landing page
+export const LandingPageContext = React.createContext();
 
 function App({ Component, pageProps }) {
-  const [userData, setUserData] = React.useState({});
+  const [landingPageData, setLandingPageData] = React.useState({
+    name: 'name',
+    tagline1: 'tagline1',
+    tagline2: 'tagline2',
+    tagline3: 'tagline3',
+    text1: 'text1',
+    text2: 'text2',
+    text3: 'text3',
+    review: 'review',
+    image1: 'public/dog-taxi.png',
+    image2: 'public/dog-taxi.png',
+    image3: 'public/dog-taxi.png',
+    idea: 'idea',
+  });
 
   // Pass an object through context, containing both
   // the state value and the state-setter function.
-  const userValue = {
-    userData,
-    setUserData,
+  const landingPageDataValue = {
+    landingPageData,
+    setLandingPageData,
   };
 
   return (
@@ -39,7 +55,7 @@ function App({ Component, pageProps }) {
       <SSRProvider>
         <GeistProvider>
           <main className={dosis.className}>
-            <UserDataContext.Provider value={userValue}>
+            <LandingPageContext.Provider value={landingPageDataValue}>
               <Component {...pageProps}>
                 <Head>
                   <title>
@@ -52,7 +68,7 @@ function App({ Component, pageProps }) {
                   <link rel="icon" href="/favicon.ico" />
                 </Head>
               </Component>
-            </UserDataContext.Provider>
+            </LandingPageContext.Provider>
           </main>
         </GeistProvider>
       </SSRProvider>

@@ -1,13 +1,24 @@
 import React from 'react';
 import { Stack, Card, Form } from 'react-bootstrap';
+import { LandingPageContext } from '../../pages/_app';
 
-function WebpageSidebar({ startUpData }) {
-  const [startupName, setStartupName] = React.useState(
-    startUpData?.name || 'Your Startup Name'
+function WebpageSidebar() {
+  const { landingPageData, setLandingPageData } = React.useContext(
+    LandingPageContext
   );
-  const [startupTagline, setStartupTagline] = React.useState(
-    startUpData?.tagline || 'Your Startup Tagline'
-  );
+  const {
+    name,
+    tagline1,
+    tagline2,
+    tagline3,
+    text1,
+    text2,
+    text3,
+    review,
+    image1,
+    image2,
+    image3,
+  } = { landingPageData };
 
   return (
     <Form>
@@ -20,8 +31,8 @@ function WebpageSidebar({ startUpData }) {
             <Card.Text>
               <Form.Control
                 type="text"
-                value={startupName}
-                onChange={(e) => setStartupName(e.target.value)}
+                value={name}
+                // onChange={(e) => setUserData({startUpData[name] = {e.target.value}, ...userData})}
               ></Form.Control>
             </Card.Text>
           </Card.Body>
@@ -36,8 +47,8 @@ function WebpageSidebar({ startUpData }) {
             <Card.Text>
               <Form.Control
                 type="textArea"
-                value={startupTagline}
-                onChange={(e) => setStartupTagline(e.target.value)}
+                value={tagline1}
+                //onChange={(e) => setStartupTagline(e.target.value)}
               ></Form.Control>
             </Card.Text>
           </Card.Body>
