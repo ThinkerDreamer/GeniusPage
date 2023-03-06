@@ -30,8 +30,8 @@ export default function Home() {
     e.preventDefault();
     setStatus('loading');
     const formData = new FormData(e.target);
-    const ideaSubmitted = formData.get('ideaTextArea');
-    setLandingPageData({ idea: ideaSubmitted, ...landingPageData });
+    const idea = formData.get('ideaTextArea');
+    setLandingPageData({ ...landingPageData, idea: idea });
 
     const endPoint = 'https://geniuspage.fly.dev/generate-idea';
     const options = {
@@ -40,7 +40,7 @@ export default function Home() {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ ideaSubmitted }),
+      body: JSON.stringify({ idea }),
     };
 
     const res = await fetch(endPoint, options);
@@ -49,8 +49,8 @@ export default function Home() {
 
     if (result.response.status === 'ok') {
       setStatus('success');
-      const newData = result.response.data;
-      setLandingPageData({ newData, ...landingPageData });
+      const newData = { ...result.response.data };
+      setLandingPageData({ ...landingPageData, ...newData });
       if (isSignedIn) {
         router.push('/generatedPage');
       } else {
