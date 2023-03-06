@@ -27,10 +27,6 @@ export default function Home() {
     const formData = new FormData(e.target);
     const idea = formData.get('ideaTextArea');
 
-    // This doesn't work to set idea in landingPageData
-    setLandingPageData({ ...landingPageData, idea: idea });
-    //console.log(`landingPageData after idea is: ${JSON.stringify(landingPageData)}`);
-
     const endPoint = 'https://geniuspage.fly.dev/generate-idea';
     const options = {
       method: 'POST',
@@ -48,7 +44,6 @@ export default function Home() {
     if (result.response.status === 'ok') {
       setStatus('success');
       const newData = { ...result.response.data };
-      //console.log(`newData is: ${JSON.stringify(newData)}`);
       const {
         business_name,
         tagline_1,
@@ -59,14 +54,8 @@ export default function Home() {
         advertising_text_3,
         review,
       } = { newData };
-
-      // This doesn't work to set it either
       setLandingPageData(newData);
-      console.log(
-        `landingPageData in handler: ${JSON.stringify(
-          landingPageData
-        )}`
-      );
+
       if (isSignedIn) {
         router.push('/generatedPage');
       } else {
