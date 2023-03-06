@@ -42,7 +42,7 @@ function WebBrowserWindow() {
             </Card.Subtitle>
             <Card.Img
               src={landingPageData['image1']}
-              height={200}
+              height={'auto'}
               width={200}
             />
             <Card.Text>
@@ -53,7 +53,7 @@ function WebBrowserWindow() {
             </Card.Subtitle>
             <Card.Img
               src={landingPageData['image2']}
-              height={200}
+              height={'auto'}
               width={200}
             />
             <Card.Text>
@@ -64,7 +64,7 @@ function WebBrowserWindow() {
             </Card.Subtitle>
             <Card.Img
               src={landingPageData['image3']}
-              height={200}
+              height={'auto'}
               width={200}
             />
             <Card.Text>
