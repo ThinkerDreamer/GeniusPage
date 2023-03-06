@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import Script from 'next/script';
 import styles from '../../styles/WebBrowserWindow.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,12 +24,11 @@ function WebBrowserWindow() {
   } = { landingPageData };
   return (
     <>
-      <Head>
-        <Script
-          src="https://kit.fontawesome.com/26456b3d35.js"
-          crossorigin="anonymous"
-        ></Script>
-      </Head>
+      <Script
+        src="https://kit.fontawesome.com/26456b3d35.js"
+        crossorigin="anonymous"
+      ></Script>
+
       <Container className={styles.outsideContainer}>
         <Card border="primary" style={{ width: '80%' }}>
           {/* Card.Header is the top bar of the window */}
