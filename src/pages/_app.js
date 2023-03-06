@@ -17,7 +17,7 @@ const dosis = Dosis({ subsets: ['latin'] });
 export const LandingPageContext = React.createContext();
 
 function App({ Component, pageProps }) {
-  const [landingPageData, setLandingPageData] = React.useState({
+  const initialLandingPageData = {
     business_name: 'Your Startup Name',
     tagline_1: 'We can do it!',
     advertising_text_1: `Ullamcorper eget nulla facilisi etiam. Aliquet enim tortor
@@ -44,7 +44,10 @@ function App({ Component, pageProps }) {
     image2: '../../public/dog-taxi.png',
     image3: '../../public/dog-taxi.png',
     idea: 'idea placeholder',
-  });
+  };
+  const [landingPageData, setLandingPageData] = React.useState(
+    initialLandingPageData
+  );
 
   // Pass an object through context, containing both
   // the state value and the state-setter function.
