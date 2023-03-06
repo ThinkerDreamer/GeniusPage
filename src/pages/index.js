@@ -1,5 +1,4 @@
 import React from 'react';
-//import styles from '@/styles/Home.module.css'; //no styles currently used
 import { Page } from '@geist-ui/core';
 import NavBar from '@/components/NavBar';
 import RainbowContainer from '@/components/RainbowContainer';
@@ -39,7 +38,6 @@ export default function Home() {
 
     const res = await fetch(endPoint, options);
     const result = await res.json();
-    //console.log(`result is: ${JSON.stringify(result)}`);
 
     if (result.response.status === 'ok') {
       setStatus('success');
