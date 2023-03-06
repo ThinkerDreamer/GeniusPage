@@ -10,18 +10,23 @@ import { LandingPageContext } from '../../pages/_app';
 function WebBrowserWindow() {
   const { landingPageData } = React.useContext(LandingPageContext);
   const {
-    name,
-    tagline1,
-    tagline2,
-    tagline3,
-    text1,
-    text2,
-    text3,
+    business_name,
+    tagline_1,
+    tagline_2,
+    tagline_3,
+    advertising_text_1,
+    advertising_text_2,
+    advertising_text_3,
     review,
     image1,
     image2,
     image3,
-  } = { landingPageData };
+  } = { ...landingPageData };
+  console.log(
+    `landingPageData in WebBrowserWindow: ${JSON.stringify(
+      landingPageData
+    )}`
+  );
   return (
     <>
       <Script
@@ -46,22 +51,22 @@ function WebBrowserWindow() {
 
           {/* Card.Body is the webpage */}
           <Card.Body>
-            <Card.Title as="h1">{name}</Card.Title>
+            <Card.Title as="h1">{business_name}</Card.Title>
             <Card.Subtitle className={styles.tagline}>
-              {tagline1}
+              {tagline_1}
             </Card.Subtitle>
             <Card.Img src={image1} height={200} width={200} />
-            <Card.Text>{text1}</Card.Text>
+            <Card.Text>{advertising_text_1}</Card.Text>
             <Card.Subtitle className={styles.tagline}>
-              {tagline2}
+              {tagline_2}
             </Card.Subtitle>
             <Card.Img src={image2} height={200} width={200} />
-            <Card.Text>{text2}</Card.Text>
+            <Card.Text>{advertising_text_2}</Card.Text>
             <Card.Subtitle className={styles.tagline}>
-              {tagline3}
+              {tagline_3}
             </Card.Subtitle>
             <Card.Img src={image3} height={200} width={200} />
-            <Card.Text>{text3}</Card.Text>
+            <Card.Text>{advertising_text_3}</Card.Text>
             <Card.Text>{review}</Card.Text>
           </Card.Body>
         </Card>
