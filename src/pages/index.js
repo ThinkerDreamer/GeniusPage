@@ -1,5 +1,4 @@
 import React from 'react';
-//import styles from '@/styles/Home.module.css'; //no styles currently used
 import { Page } from '@geist-ui/core';
 import NavBar from '@/components/NavBar';
 import RainbowContainer from '@/components/RainbowContainer';
@@ -39,21 +38,10 @@ export default function Home() {
 
     const res = await fetch(endPoint, options);
     const result = await res.json();
-    //console.log(`result is: ${JSON.stringify(result)}`);
 
     if (result.response.status === 'ok') {
       setStatus('success');
-      const newData = { ...result.response.data };
-      const {
-        business_name,
-        tagline_1,
-        advertising_text_1,
-        tagline_2,
-        advertising_text_2,
-        tagline_3,
-        advertising_text_3,
-        review,
-      } = { newData };
+      const newData = { ...landingPageData, ...result.response.data };
       setLandingPageData(newData);
 
       if (isSignedIn) {

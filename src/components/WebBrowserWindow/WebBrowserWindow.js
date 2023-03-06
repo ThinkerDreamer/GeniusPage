@@ -9,6 +9,7 @@ import { LandingPageContext } from '../../pages/_app';
 
 function WebBrowserWindow() {
   const { landingPageData } = React.useContext(LandingPageContext);
+  const imageWidth = 100;
 
   return (
     <>
@@ -43,7 +44,7 @@ function WebBrowserWindow() {
             <Card.Img
               src={landingPageData['image1']}
               height={'auto'}
-              width={200}
+              width={imageWidth}
             />
             <Card.Text>
               {landingPageData['advertising_text_1']}
@@ -54,7 +55,7 @@ function WebBrowserWindow() {
             <Card.Img
               src={landingPageData['image2']}
               height={'auto'}
-              width={200}
+              width={imageWidth}
             />
             <Card.Text>
               {landingPageData['advertising_text_2']}
@@ -65,7 +66,7 @@ function WebBrowserWindow() {
             <Card.Img
               src={landingPageData['image3']}
               height={'auto'}
-              width={200}
+              width={imageWidth}
             />
             <Card.Text>
               {landingPageData['advertising_text_3']}
