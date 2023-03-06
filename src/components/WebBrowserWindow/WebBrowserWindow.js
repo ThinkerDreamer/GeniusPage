@@ -9,9 +9,7 @@ import { Container, Card } from 'react-bootstrap';
 import { LandingPageContext } from '../../pages/_app';
 
 function WebBrowserWindow() {
-  const { landingPageData, setLandingPageData } = React.useContext(
-    LandingPageContext
-  );
+  const { landingPageData } = React.useContext(LandingPageContext);
   const {
     name,
     tagline1,
