@@ -6,12 +6,9 @@ import WebpageSidebar from '@/components/WebpageSidebar';
 import { Container, Row, Col } from 'react-bootstrap';
 import WebBrowserWindow from '@/components/WebBrowserWindow';
 
-import { LandingPageContext } from './_app';
-
 export default function GeneratedPage() {
   const { isSignedIn } = useAuth();
-  
-  console.log({ startUpData });
+
   return (
     <>
       <Page.Header>
