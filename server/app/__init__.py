@@ -75,7 +75,7 @@ def request_landing_page():
 @app.route("/generate-idea", methods=['POST'])
 def generate_landing_page_infos():
     data = request.get_json()
-    # data = data['text']
+    data = data['idea']
     # original_data = data
 
     tagline = f"Write a tagline sentence for a {data}, maximum 20 characters and without period."
