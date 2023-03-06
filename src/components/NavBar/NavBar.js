@@ -8,7 +8,7 @@ function NavBar({ isUserLoggedIn }) {
     <Navbar>
       <Container fluid>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <Image
             src="/logo-dark.svg"
             width="30"
