@@ -57,22 +57,22 @@ function App({ Component, pageProps }) {
   };
 
   return (
-    <ClerkProvider
-      publishableKey={
-        'pk_test_dGhhbmtmdWwtY29sdC0xNC5jbGVyay5hY2NvdW50cy5kZXYk'
-      }
-      appearance={{
-        variables: {
-          colorPrimary: '#7447D7',
-          colorText: '#271254',
-          fontFamily: dosis.style.fontFamily,
-        },
-      }}
-    >
-      <SSRProvider>
-        <GeistProvider>
-          <main className={dosis.className}>
-            <LandingPageContext.Provider value={landingPageDataValue}>
+    <LandingPageContext.Provider value={landingPageDataValue}>
+      <ClerkProvider
+        publishableKey={
+          'pk_test_dGhhbmtmdWwtY29sdC0xNC5jbGVyay5hY2NvdW50cy5kZXYk'
+        }
+        appearance={{
+          variables: {
+            colorPrimary: '#7447D7',
+            colorText: '#271254',
+            fontFamily: dosis.style.fontFamily,
+          },
+        }}
+      >
+        <SSRProvider>
+          <GeistProvider>
+            <main className={dosis.className}>
               <Component {...pageProps}>
                 <Head>
                   <title>
@@ -85,11 +85,11 @@ function App({ Component, pageProps }) {
                   <link rel="icon" href="/favicon.ico" />
                 </Head>
               </Component>
-            </LandingPageContext.Provider>
-          </main>
-        </GeistProvider>
-      </SSRProvider>
-    </ClerkProvider>
+            </main>
+          </GeistProvider>
+        </SSRProvider>
+      </ClerkProvider>
+    </LandingPageContext.Provider>
   );
 }
 
