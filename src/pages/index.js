@@ -43,17 +43,7 @@ export default function Home() {
 
     if (result.response.status === 'ok') {
       setStatus('success');
-      const newData = { ...result.response.data };
-      const {
-        business_name,
-        tagline_1,
-        advertising_text_1,
-        tagline_2,
-        advertising_text_2,
-        tagline_3,
-        advertising_text_3,
-        review,
-      } = { newData };
+      const newData = { ...landingPageData, ...result.response.data };
       setLandingPageData(newData);
 
       if (isSignedIn) {
