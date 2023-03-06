@@ -11,7 +11,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
 const dosis = Dosis({ subsets: ['latin'] });
-//export const UserDataContext = React.createContext();
 
 // LandingPageContext is an object with all the generated data for a landing page
 export const LandingPageContext = React.createContext();
