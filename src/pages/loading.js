@@ -12,28 +12,9 @@ export default function LoadingPage() {
   // setTimeout(() => {
   //   router.push({ pathname: '/dashboard', query: { idea: idea } });
   // }, 3000);
-  React.useEffect(() => {
-    const postIdea = async function (idea) {
-      setStatus('loading');
-      const url = new URL('/api/generate-idea', location.href);
-      const jsonObject = {
-        text: idea,
-      };
-      const endPoint = url;
-      const options = {
-        method: 'POST',
-        body: jsonObject,
-      };
-      const response = await fetch(endPoint, options);
-      const result = await response.json();
-      if (!result.ok) {
-        setStatus('error');
-      } else {
-        setStatus('success');
-      }
-    };
 
-    postIdea();
+  React.useEffect(() => {
+    
   }, []);
 
   return (

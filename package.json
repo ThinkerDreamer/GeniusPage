@@ -10,8 +10,13 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.11.1",
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@geist-ui/core": "^2.3.8",
     "@next/font": "13.1.6",
+    "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.2.3",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",

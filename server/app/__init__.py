@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import request, jsonify
+from flask_cors import *
 import openai
+import os
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -8,14 +10,15 @@ from dataclasses import dataclass
 from sqlalchemy import create_engine
 from sqlalchemy import Column, String, Integer, ForeignKey
 
-openai.api_key = 'key'
+openai.api_key = os.environ.get('OPENAI_API_KEY')
+database_url = os.environ.get('DATABASE_URL')
 engine = create_engine('postgresql://@@', echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
 
-app = Flask(__name__, static_folder='index.html')
-
+app = Flask(__name__)
+CORS(app, origins='*')
 
 @dataclass
 class LandingPage(Base):
@@ -48,6 +51,13 @@ class User(Base):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
+#Hello World route for testing with no API key
+@app.route('/hello', methods=['GET'])
+@cross_origin()
+def hello_api():
+    data = request.args['text'] or request.args['idea']
+    print(data)
+    return {'response': 'OK'}
 
 
 #Get info of landing page
@@ -65,7 +75,8 @@ def request_landing_page():
 @app.route("/generate-idea", methods=['POST'])
 def generate_landing_page_infos():
     data = request.get_json()
-    data = data['text']
+    data = data['idea']
+    # original_data = data
 
     tagline = f"Write a tagline sentence for a {data}, maximum 20 characters and without period."
     advertising_text = f"Write an advertising text for a {data}, maximum two sentence, less than 100 characters and without period."
@@ -100,14 +111,15 @@ def generate_landing_page_infos():
     response['review'] = openai.Completion.create(engine='text-davinci-001', prompt=review, max_tokens=25)
     response['review'] = response["review"]['choices'][0]['text']
 
-    response['idea'] = data['text']
+    response['idea'] = data
     response['id_landing_page'] = 2
 
-    data = LandingPage(**response)
-    session.add(data)
-    session.commit()
+    # data = LandingPage(**response)
+    # session.add(data)
+    # session.commit()
 
-    return jsonify({'response': response})
+    return jsonify({'response': {'status': 'ok', 'data': response}})
+    # return jsonify({'response': {'status': 'ok', 'data': original_data}})
 
 #Update landing Page infos
 @app.route("/update-land-page", methods=['PUT'])

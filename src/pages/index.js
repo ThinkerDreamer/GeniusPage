@@ -6,37 +6,79 @@ import RainbowContainer from '@/components/RainbowContainer';
 import StartUpIdeaForm from '@/components/StartUpIdeaForm';
 import TopDescription from '@/components/TopDescription';
 import { useClerk, useAuth } from '@clerk/clerk-react';
-import {
-  getAuth,
-  clerkClient,
-  buildClerkProps,
-} from '@clerk/nextjs/server';
 import { useRouter } from 'next/router';
+import { LandingPageContext } from './_app';
 
 export default function Home() {
-  const { isSignedIn, userId } = useAuth();
+  const { isSignedIn } = useAuth();
   const { openSignUp } = useClerk();
   const router = useRouter();
 
-  // TODO: Actually handle submitting idea to the backend
+  const { landingPageData, setLandingPageData } = React.useContext(
+    LandingPageContext
+  );
+
+  // idle | loading | success | error
+  const [status, setStatus] = React.useState('idle');
+
   async function handleGenerateSubmit(e) {
     e.preventDefault();
+    setStatus('loading');
     const formData = new FormData(e.target);
-    const ideaSubmitted = formData.get('ideaTextArea');
+    const idea = formData.get('ideaTextArea');
 
-    if (!isSignedIn) {
-      openSignUp({
-        afterSignUpUrl: `/loading?idea=${ideaSubmitted}`,
-      });
+    // This doesn't work to set idea in landingPageData
+    setLandingPageData({ ...landingPageData, idea: idea });
+    //console.log(`landingPageData after idea is: ${JSON.stringify(landingPageData)}`);
+
+    const endPoint = 'https://geniuspage.fly.dev/generate-idea';
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ idea }),
+    };
+
+    const res = await fetch(endPoint, options);
+    const result = await res.json();
+    //console.log(`result is: ${JSON.stringify(result)}`);
+
+    if (result.response.status === 'ok') {
+      setStatus('success');
+      const newData = { ...result.response.data };
+      //console.log(`newData is: ${JSON.stringify(newData)}`);
+      const {
+        business_name,
+        tagline_1,
+        advertising_text_1,
+        tagline_2,
+        advertising_text_2,
+        tagline_3,
+        advertising_text_3,
+        review,
+      } = { newData };
+
+      // This doesn't work to set it either
+      setLandingPageData(newData);
+      console.log(
+        `landingPageData in handler: ${JSON.stringify(
+          landingPageData
+        )}`
+      );
+      if (isSignedIn) {
+        router.push('/generatedPage');
+      } else {
+        openSignUp({
+          afterSignUpUrl: '/generatedPage',
+          afterSignInUrl: '/generatedPage',
+        });
+      }
+    } else {
+      setStatus('error');
+      console.error('there was an error fetching data');
     }
-    if (isSignedIn) {
-      console.log(`userId is ${userId}`);
-      router.push({
-        pathname: '/loading',
-        query: { idea: ideaSubmitted },
-      });
-    }
-    alert(`${ideaSubmitted}? That's a great idea!`);
   }
 
   return (
@@ -45,10 +87,14 @@ export default function Home() {
         <NavBar isUserLoggedIn={isSignedIn} />
         {!isSignedIn && <TopDescription />}
       </Page.Header>
+
       <RainbowContainer>
-        <StartUpIdeaForm
-          handleGenerateSubmit={handleGenerateSubmit}
-        />
+        {status === 'idle' && (
+          <StartUpIdeaForm
+            handleGenerateSubmit={handleGenerateSubmit}
+          />
+        )}
+        {status === 'loading' && <h2>Loading...</h2>}
       </RainbowContainer>
       <Page.Footer>
         <a
@@ -61,12 +107,3 @@ export default function Home() {
     </>
   );
 }
-
-export const getServerSideProps = async ({ req }) => {
-  const { userId } = getAuth(req);
-  const user = userId
-    ? await clerkClient.users.getUser(userId)
-    : undefined;
-
-  return { props: { ...buildClerkProps(req, { user }) } };
-};
