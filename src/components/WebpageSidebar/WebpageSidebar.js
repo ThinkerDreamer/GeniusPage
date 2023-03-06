@@ -7,22 +7,52 @@ function WebpageSidebar() {
     LandingPageContext
   );
   const {
-    name,
-    tagline1,
-    tagline2,
-    tagline3,
-    text1,
-    text2,
-    text3,
+    business_name,
+    tagline_1,
+    tagline_2,
+    tagline_3,
+    advertising_text_1,
+    advertising_text_2,
+    advertising_text_3,
     review,
     image1,
     image2,
     image3,
   } = { landingPageData };
 
+  console.log(`lpd in sidebar: ${JSON.stringify(landingPageData)}`);
+  console.log(`lpd keys: ${Object.keys(landingPageData)}`);
+  console.log(
+    `typeof lpd keys: ${typeof Object.keys(landingPageData)}`
+  );
   return (
     <Form>
       <Stack gap={2}>
+        {/* {Object.keys(landingPageData).map((key) => {
+          <Card key={key}>
+            <Card.Header style={{ padding: '0.5rem' }}>
+              <Card.Title style={{ marginBottom: 0 }}>
+                {key}
+              </Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <Card.Text>
+                <Form.Control
+                  type="text"
+                  value={landingPageData[key]}
+                  onChange={(e) => {
+                    const nextValue = e.target.value;
+                    const nextLandingPageData = {
+                      ...landingPageData,
+                      key: nextValue,
+                    };
+                    setLandingPageData(nextLandingPageData);
+                  }}
+                ></Form.Control>
+              </Card.Text>
+            </Card.Body>
+          </Card>;
+        })} */}
         <Card>
           <Card.Header style={{ padding: '0.5rem' }}>
             <Card.Title style={{ marginBottom: 0 }}>Name</Card.Title>
@@ -31,12 +61,20 @@ function WebpageSidebar() {
             <Card.Text>
               <Form.Control
                 type="text"
-                value={name}
-                // onChange={(e) => setUserData({startUpData[name] = {e.target.value}, ...userData})}
+                value={business_name}
+                onChange={(e) => {
+                  const nextBusinessName = e.target.value;
+                  const nextLandingPageData = {
+                    ...landingPageData,
+                    business_name: nextBusinessName,
+                  };
+                  setUserData(nextLandingPageData);
+                }}
               ></Form.Control>
             </Card.Text>
           </Card.Body>
         </Card>
+
         <Card>
           <Card.Header style={{ padding: '0.5rem' }}>
             <Card.Title style={{ marginBottom: 0 }}>
@@ -47,12 +85,13 @@ function WebpageSidebar() {
             <Card.Text>
               <Form.Control
                 type="textArea"
-                value={tagline1}
+                value={tagline_1}
                 //onChange={(e) => setStartupTagline(e.target.value)}
               ></Form.Control>
             </Card.Text>
           </Card.Body>
         </Card>
+
         <Card>
           <Card.Header style={{ padding: '0.5rem' }}>
             <Card.Title style={{ marginBottom: 0 }}>Image</Card.Title>
