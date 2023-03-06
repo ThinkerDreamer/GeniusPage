@@ -76,7 +76,7 @@ def request_landing_page():
 def generate_landing_page_infos():
     data = request.get_json()
     # data = data['text']
-    original_data = data
+    # original_data = data
 
     tagline = f"Write a tagline sentence for a {data}, maximum 20 characters and without period."
     advertising_text = f"Write an advertising text for a {data}, maximum two sentence, less than 100 characters and without period."
@@ -111,7 +111,7 @@ def generate_landing_page_infos():
     response['review'] = openai.Completion.create(engine='text-davinci-001', prompt=review, max_tokens=25)
     response['review'] = response["review"]['choices'][0]['text']
 
-    response['idea'] = data['text']
+    response['idea'] = data
     response['id_landing_page'] = 2
 
     data = LandingPage(**response)
