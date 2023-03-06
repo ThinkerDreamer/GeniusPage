@@ -40,9 +40,9 @@ function App({ Component, pageProps }) {
             maecenas. Vulputate ut pharetra sit amet aliquam.`,
     review:
       'This business is the best one ever! You should give them all your money! --Jane Satisfiedcustomer',
-    image1: `public/dog-taxi.png`,
-    image2: 'public/dog-taxi.png',
-    image3: 'public/dog-taxi.png',
+    image1: `../../public/dog-taxi.png`,
+    image2: '../../public/dog-taxi.png',
+    image3: '../../public/dog-taxi.png',
     idea: 'idea placeholder',
   });
 
