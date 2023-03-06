@@ -9,20 +9,7 @@ import { LandingPageContext } from '../../pages/_app';
 
 function WebBrowserWindow() {
   const { landingPageData } = React.useContext(LandingPageContext);
-  const {
-    business_name,
-    tagline_1,
-    tagline_2,
-    tagline_3,
-    advertising_text_1,
-    advertising_text_2,
-    advertising_text_3,
-    review,
-    image1,
-    image2,
-    image3,
-  } = { landingPageData };
-  console.log(`business_name in WebBrowserWindow: ${business_name}`);
+
   return (
     <>
       <Script
@@ -47,23 +34,43 @@ function WebBrowserWindow() {
 
           {/* Card.Body is the webpage */}
           <Card.Body>
-            <Card.Title as="h1">{business_name}</Card.Title>
+            <Card.Title as="h1">
+              {landingPageData['business_name']}
+            </Card.Title>
             <Card.Subtitle className={styles.tagline}>
-              {tagline_1}
+              {landingPageData['tagline_1']}
             </Card.Subtitle>
-            <Card.Img src={image1} height={200} width={200} />
-            <Card.Text>{advertising_text_1}</Card.Text>
+            <Card.Img
+              src={landingPageData['image1']}
+              height={200}
+              width={200}
+            />
+            <Card.Text>
+              {landingPageData['advertising_text_1']}
+            </Card.Text>
             <Card.Subtitle className={styles.tagline}>
-              {tagline_2}
+              {landingPageData['tagline_2']}
             </Card.Subtitle>
-            <Card.Img src={image2} height={200} width={200} />
-            <Card.Text>{advertising_text_2}</Card.Text>
+            <Card.Img
+              src={landingPageData['image2']}
+              height={200}
+              width={200}
+            />
+            <Card.Text>
+              {landingPageData['advertising_text_2']}
+            </Card.Text>
             <Card.Subtitle className={styles.tagline}>
-              {tagline_3}
+              {landingPageData['tagline_3']}
             </Card.Subtitle>
-            <Card.Img src={image3} height={200} width={200} />
-            <Card.Text>{advertising_text_3}</Card.Text>
-            <Card.Text>{review}</Card.Text>
+            <Card.Img
+              src={landingPageData['image3']}
+              height={200}
+              width={200}
+            />
+            <Card.Text>
+              {landingPageData['advertising_text_3']}
+            </Card.Text>
+            <Card.Text>{landingPageData['review']}</Card.Text>
           </Card.Body>
         </Card>
       </Container>
