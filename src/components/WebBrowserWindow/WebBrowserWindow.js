@@ -21,12 +21,8 @@ function WebBrowserWindow() {
     image1,
     image2,
     image3,
-  } = { ...landingPageData };
-  console.log(
-    `landingPageData in WebBrowserWindow: ${JSON.stringify(
-      landingPageData
-    )}`
-  );
+  } = { landingPageData };
+  console.log(`business_name in WebBrowserWindow: ${business_name}`);
   return (
     <>
       <Script
