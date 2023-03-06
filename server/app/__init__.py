@@ -114,9 +114,9 @@ def generate_landing_page_infos():
     response['idea'] = data
     response['id_landing_page'] = 2
 
-    data = LandingPage(**response)
-    session.add(data)
-    session.commit()
+    # data = LandingPage(**response)
+    # session.add(data)
+    # session.commit()
 
     return jsonify({'response': {'status': 'ok', 'data': response}})
     # return jsonify({'response': {'status': 'ok', 'data': original_data}})
