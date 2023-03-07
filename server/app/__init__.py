@@ -12,6 +12,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 database_url = os.environ.get('DATABASE_URL')
+SD_AUTH_TOKEN = os.environ.get('SD_AUTH_TOKEN')
 engine = create_engine('postgresql://@@', echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
