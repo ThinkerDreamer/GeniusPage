@@ -22,6 +22,6 @@ def init_db():
         conn.execute(text("DROP TABLE IF EXISTS users CASCADE;"))
         conn.execute(text("DROP TABLE IF EXISTS landing_pages CASCADE;"))
 
-    import server.lib.models
+    import lib.models
 
     Base.metadata.create_all(bind=engine)

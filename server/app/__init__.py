@@ -3,7 +3,7 @@ from flask import request, jsonify
 from flask_cors import *
 import openai
 import os
-from ..lib.models import db, User, LandingPage
+from .lib.models import db, User, LandingPage
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 SD_AUTH_TOKEN = os.environ.get('SD_AUTH_TOKEN')
