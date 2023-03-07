@@ -20,6 +20,13 @@ export default function Home() {
   // idle | loading | success | error
   const [status, setStatus] = React.useState('idle');
 
+  React.useEffect(() => {
+    window.localStorage.setItem(
+      'landingPageData',
+      JSON.stringify(landingPageData)
+    );
+  }, [landingPageData]);
+
   async function handleGenerateSubmit(e) {
     e.preventDefault();
     setStatus('loading');
@@ -40,13 +47,15 @@ export default function Home() {
     const result = await res.json();
 
     if (result.response.status === 'ok') {
-      setStatus('success');
       const newData = { ...landingPageData, ...result.response.data };
       setLandingPageData(newData);
+      setStatus('success');
 
       if (isSignedIn) {
+        alert('is signed in, pushing to /genpage');
         router.push('/generatedPage');
       } else {
+        alert('isnt signed in, showing modal');
         openSignUp({
           afterSignUpUrl: '/generatedPage',
           afterSignInUrl: '/generatedPage',
