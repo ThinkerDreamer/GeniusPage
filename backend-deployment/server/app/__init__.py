@@ -3,7 +3,7 @@ from flask import request, jsonify
 from flask_cors import *
 import openai, base64, torch
 import os
-from ..lib.models import db, User, LandingPage
+from ..lib.models import User, LandingPage
 from diffusers import StableDiffusionPipeline
 from torch import autocast
 from io import BytesIO
@@ -22,8 +22,6 @@ engine = create_engine(DATABASE_URL, echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
-
-session = db.Session()
 app = Flask(__name__)
 CORS(app, origins='*')
 
