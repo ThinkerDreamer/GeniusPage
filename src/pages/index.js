@@ -81,6 +81,9 @@ export default function Home() {
           />
         )}
         {status === 'loading' && <h2>Loading...</h2>}
+        {status === 'error' && (
+          <h2>There was an error. Please retry.</h2>
+        )}
       </RainbowContainer>
       <Page.Footer>
         <a
