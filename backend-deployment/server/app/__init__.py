@@ -3,15 +3,16 @@ from flask import request, jsonify
 from flask_cors import *
 import openai
 import os
-from .lib.models import db, User, LandingPage
+from ..lib.models import db, User, LandingPage
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 SD_AUTH_TOKEN = os.environ.get('SD_AUTH_TOKEN')
 
 session = db.Session()
-
 app = Flask(__name__)
 CORS(app, origins='*')
+db.init_app(app)
+
 
 #Hello World route for testing with no API key
 @app.route('/hello', methods=['GET'])

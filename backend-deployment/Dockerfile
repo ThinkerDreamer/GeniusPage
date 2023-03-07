@@ -2,7 +2,7 @@
 
 FROM python:3.9
 
-WORKDIR /server
+WORKDIR /backend-deployment
 RUN pip install --upgrade pip
 COPY  ./requirements.txt ./
 RUN pip install -r requirements.txt
