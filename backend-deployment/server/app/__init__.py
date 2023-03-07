@@ -7,9 +7,21 @@ from ..lib.models import db, User, LandingPage
 from diffusers import StableDiffusionPipeline
 from torch import autocast
 from io import BytesIO
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 SD_AUTH_TOKEN = os.environ.get('SD_AUTH_TOKEN')
+
+DATABASE_URL = os.environ.get('DATABASE_URL')
+if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+SQLALCHEMY_DATABASE_URI = DATABASE_URL
+
+engine = create_engine(DATABASE_URL, echo=True)
+Session = sessionmaker(bind=engine)
+session = Session()
+Base = declarative_base()
 
 session = db.Session()
 app = Flask(__name__)
