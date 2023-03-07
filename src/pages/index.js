@@ -40,9 +40,9 @@ export default function Home() {
     const result = await res.json();
 
     if (result.response.status === 'ok') {
-      setStatus('success');
       const newData = { ...landingPageData, ...result.response.data };
       setLandingPageData(newData);
+      setStatus('success');
 
       if (isSignedIn) {
         router.push('/generatedPage');
