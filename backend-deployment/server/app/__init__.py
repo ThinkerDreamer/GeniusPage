@@ -1,55 +1,20 @@
 from flask import Flask
 from flask import request, jsonify
 from flask_cors import *
-import openai
+import openai, base64, torch
 import os
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-from dataclasses import dataclass
-from sqlalchemy import create_engine
-from sqlalchemy import Column, String, Integer, ForeignKey
+from ..lib.models import db, User, LandingPage
+from diffusers import StableDiffusionPipeline
+from torch import autocast
+from io import BytesIO
 
 openai.api_key = os.environ.get('OPENAI_API_KEY')
-database_url = os.environ.get('DATABASE_URL')
 SD_AUTH_TOKEN = os.environ.get('SD_AUTH_TOKEN')
-engine = create_engine('postgresql://@@', echo=True)
-Session = sessionmaker(bind=engine)
-session = Session()
-Base = declarative_base()
 
+session = db.Session()
 app = Flask(__name__)
 CORS(app, origins='*')
-
-@dataclass
-class LandingPage(Base):
-    __tablename__ = 'landing_page'
-
-    id_landing_page = Column(Integer, primary_key=True)
-    business_name = Column(String(40))
-    tagline_1 = Column(String(200))
-    tagline_2 = Column(String(200))
-    tagline_3 = Column(String(200))
-    advertising_text_1 = Column(String(250))
-    advertising_text_2 = Column(String(250))
-    advertising_text_3 = Column(String(250))
-    review = Column(String(200))
-    id_user = Column(Integer, ForeignKey('user_info.id_user'))
-
-    users = relationship('User')
-
-    def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
-
-@dataclass
-class User(Base):
-    __tablename__ = 'user_info'
-
-    id_user = Column(Integer, primary_key=True)
-    name_user = Column(String(40))
-
-    def as_dict(self):
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+db.init_app(app)
 
 
 #Hello World route for testing with no API key
@@ -111,13 +76,39 @@ def generate_landing_page_infos():
 
     response['review'] = openai.Completion.create(engine='text-davinci-001', prompt=review, max_tokens=25)
     response['review'] = response["review"]['choices'][0]['text']
+    
+    devices = "cuda"
+    modelId = "CompVis/stable-diffusion-v1-4"
+    pipe = StableDiffusionPipeline.from_pretrained(modelId, revision="fp16", torch_dtype = torch.float16, use_auth_token = auth_token)
+    pipe.to(devices)
+
+    with autocast(devices):
+        img = pipe(data, guidance_scale = 8.5).images[0]
+        img2 = pipe(data, guidance_scale = 8.5).images[0]
+        img3 = pipe(data, guidance_scale = 8.5).images[0]
+
+        img.save("resultimage.png")
+        buffer = BytesIO()
+        img.save(buffer, format = "PNG")
+        response['image1'] = base64.b64encode(buffer.getvalue())
+
+        img2.save("result2image.png")
+        buffer = BytesIO()
+        img2.save(buffer, format = "PNG")
+        response['image2'] = base64.b64encode(buffer.getvalue())
+
+        img3.save("result3image.png")
+        buffer = BytesIO()
+        img3.save(buffer, format = "PNG")
+        response['image3'] = base64.b64encode(buffer.getvalue())
+
 
     response['idea'] = data
     response['id_landing_page'] = 2
 
-    # data = LandingPage(**response)
-    # session.add(data)
-    # session.commit()
+    data = LandingPage(**response)
+    session.add(data)
+    session.commit()
 
     return jsonify({'response': {'status': 'ok', 'data': response}})
     # return jsonify({'response': {'status': 'ok', 'data': original_data}})
