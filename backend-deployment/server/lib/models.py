@@ -21,6 +21,7 @@ class LandingPage(Base):
     advertising_text_3 = Column(String(250))
     review = Column(String(200))
     id_user = Column(Integer, ForeignKey('users.id_user'))
+    idea = Column(String(250))
 
     users = relationship('User')
 
