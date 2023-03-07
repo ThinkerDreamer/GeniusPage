@@ -8,8 +8,17 @@ import { Container, Card } from 'react-bootstrap';
 import { LandingPageContext } from '../../pages/_app';
 
 function WebBrowserWindow() {
-  const { landingPageData } = React.useContext(LandingPageContext);
+  const { landingPageData, setLandingPageData } = React.useContext(
+    LandingPageContext
+  );
   const imageWidth = 100;
+
+  React.useEffect(() => {
+    const localData = window.localStorage.getItem('landingPageData');
+    if (localData != null) {
+      setLandingPageData(JSON.parse(localData));
+    }
+  }, []);
 
   return (
     <>
