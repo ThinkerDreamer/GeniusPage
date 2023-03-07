@@ -44,7 +44,7 @@ class LandingPage(Base):
 class User(Base):
     __tablename__ = 'user_info'
 
-    id_user = Column(Integer, primary_key=True)
+    id_user = Column(String(40), primary_key=True)
     name_user = Column(String(40))
 
     def as_dict(self):
