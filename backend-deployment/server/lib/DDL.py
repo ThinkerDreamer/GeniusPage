@@ -5,6 +5,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session
 DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+SQLALCHEMY_DATABASE_URI = DATABASE_URL
 
 engine = create_engine(DATABASE_URL, echo=True)
 Session = sessionmaker(bind=engine)
