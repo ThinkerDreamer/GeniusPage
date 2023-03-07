@@ -86,38 +86,38 @@ def generate_landing_page_infos():
     response['review'] = openai.Completion.create(engine='text-curie-001', prompt=review, max_tokens=25)
     response['review'] = response["review"]['choices'][0]['text']
     
-    # devices = "cuda"
-    # modelId = "CompVis/stable-diffusion-v1-4"
-    # pipe = StableDiffusionPipeline.from_pretrained(modelId, revision="fp16", torch_dtype = torch.float16, use_auth_token = SD_AUTH_TOKEN)
-    # pipe.to(devices)
+    devices = "cuda"
+    modelId = "CompVis/stable-diffusion-v1-4"
+    pipe = StableDiffusionPipeline.from_pretrained(modelId, revision="fp16", torch_dtype = torch.float16, use_auth_token = SD_AUTH_TOKEN)
+    pipe.to(devices)
 
-    # with autocast(devices):
-    #     img = pipe(data, guidance_scale = 8.5).images[0]
-    #     img2 = pipe(data, guidance_scale = 8.5).images[0]
-    #     img3 = pipe(data, guidance_scale = 8.5).images[0]
+    with autocast(devices):
+        img = pipe(data, guidance_scale = 8.5).images[0]
+        # img2 = pipe(data, guidance_scale = 8.5).images[0]
+        # img3 = pipe(data, guidance_scale = 8.5).images[0]
 
-    #     img.save("resultimage.png")
-    #     buffer = BytesIO()
-    #     img.save(buffer, format = "PNG")
-    #     response['image1'] = base64.b64encode(buffer.getvalue())
+        img.save("resultimage.png")
+        buffer = BytesIO()
+        img.save(buffer, format = "PNG")
+        response['image1'] = base64.b64encode(buffer.getvalue())
 
-    #     img2.save("result2image.png")
-    #     buffer = BytesIO()
-    #     img2.save(buffer, format = "PNG")
-    #     response['image2'] = base64.b64encode(buffer.getvalue())
+        # img2.save("result2image.png")
+        # buffer = BytesIO()
+        # img2.save(buffer, format = "PNG")
+        # response['image2'] = base64.b64encode(buffer.getvalue())
 
-    #     img3.save("result3image.png")
-    #     buffer = BytesIO()
-    #     img3.save(buffer, format = "PNG")
-    #     response['image3'] = base64.b64encode(buffer.getvalue())
+        # img3.save("result3image.png")
+        # buffer = BytesIO()
+        # img3.save(buffer, format = "PNG")
+        # response['image3'] = base64.b64encode(buffer.getvalue())
 
 
     response['idea'] = data
     response['id_landing_page'] = 2
 
-    data = LandingPage(**response)
-    session.add(data)
-    session.commit()
+    # data = LandingPage(**response)
+    # session.add(data)
+    # session.commit()
 
     return jsonify({'response': {'status': 'ok', 'data': response}})
     # return jsonify({'response': {'status': 'ok', 'data': original_data}})
