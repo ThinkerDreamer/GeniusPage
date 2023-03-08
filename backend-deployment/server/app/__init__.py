@@ -74,11 +74,11 @@ def generate_landing_page_infos():
     response["advertising_text_1"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text, max_tokens=50)
     response["advertising_text_1"] = response["advertising_text_1"]['choices'][0]['text']
 
-    advertising_text_2 = f"Write an advertising text with maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_2']}"
+    advertising_text_2 = f"Write an advertising text for a {data} with maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_2']}"
     response["advertising_text_2"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text_2, max_tokens=50)
     response["advertising_text_2"] = response["advertising_text_2"]['choices'][0]['text']
 
-    advertising_text_3 = f"Write an advertising text with maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_3']}"
+    advertising_text_3 = f"Write an advertising text for a {data} with maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_3']}"
     response["advertising_text_3"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text_3, max_tokens=50)
     response["advertising_text_3"] = response["advertising_text_3"]['choices'][0]['text']
 
