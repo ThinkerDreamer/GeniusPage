@@ -115,10 +115,13 @@ def generate_landing_page_infos():
     response['idea'] = data
 
     data = LandingPage(**response)
-    session.add(data)
-    session.commit()
-
-    return jsonify({'response': {'status': 'ok', 'data': response}})
+    try:
+        session.add(data)
+        session.commit()
+    except:
+        print(f"couldn't save data to the database: {data}")
+    finally:
+        return jsonify({'response': {'status': 'ok', 'data': response}})
     # return jsonify({'response': {'status': 'ok', 'data': original_data}})
 
 #Update landing Page infos
