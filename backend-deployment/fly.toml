@@ -8,9 +8,9 @@ processes = []
 [env]
   PORT = '8080'
 
-# [mounts]
-# source="gp_storage"
-# destination="/opt/venv"
+[mounts]
+  source="gp_storage"
+  destination="/backend/storage"
 
 [experimental]
   auto_rollback = true
