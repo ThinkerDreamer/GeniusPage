@@ -9,8 +9,8 @@ processes = []
   PORT = '8080'
 
 [mounts]
-source="gp_storage"
-destination="/gp_storage"
+  source="gp_storage"
+  destination="/backend-deployment/storage"
 
 [experimental]
   auto_rollback = true
