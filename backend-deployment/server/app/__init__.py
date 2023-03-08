@@ -54,35 +54,35 @@ def generate_landing_page_infos():
     # original_data = data
     response = {}
 
-    business_name = f"Write a business name of one word for a {data}, maximum 15 characters"
-    response["business_name"] = openai.Completion.create(engine='text-curie-001', prompt=business_name, max_tokens=8)
+    business_name = f"Write a business name of one PascalCase word for a {data}, maximum 15 characters"
+    response["business_name"] = openai.Completion.create(engine='text-curie-001', prompt=business_name, max_tokens=15)
     response["business_name"] = response["business_name"]['choices'][0]['text']
 
     tagline = f"Write a tagline sentence for a {data}, maximum 30 characters and without a period."
     advertising_text = f"Write an advertising text for a {data} called {response['business_name']}, maximum two complete sentences, less than 150 characters."
-    review = f"Write a review for a company called: {response['business_name']}, in a complete sentence praising their services of {data}, maximum 50 characters"
+    review = f"Write a review for a company called: {response['business_name']}, in one sentence praising their services of {data}, maximum 50 characters"
 
-    response["tagline_1"] = openai.Completion.create(engine='text-curie-001', prompt=tagline, max_tokens=13)
+    response["tagline_1"] = openai.Completion.create(engine='text-curie-001', prompt=tagline, max_tokens=20)
     response["tagline_1"] = response["tagline_1"]['choices'][0]['text']
     
-    response["tagline_2"] = openai.Completion.create(engine='text-curie-001', prompt=tagline, max_tokens=13)
+    response["tagline_2"] = openai.Completion.create(engine='text-curie-001', prompt=tagline, max_tokens=20)
     response["tagline_2"] = response["tagline_2"]['choices'][0]['text']
 
-    response["tagline_3"] = openai.Completion.create(engine='text-curie-001', prompt=tagline, max_tokens=13)
+    response["tagline_3"] = openai.Completion.create(engine='text-curie-001', prompt=tagline, max_tokens=20)
     response["tagline_3"] = response["tagline_3"]['choices'][0]['text']
 
-    response["advertising_text_1"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text, max_tokens=50)
+    response["advertising_text_1"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text, max_tokens=60)
     response["advertising_text_1"] = response["advertising_text_1"]['choices'][0]['text']
 
     advertising_text_2 = f"Write an advertising text for a {data} with maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_2']}"
-    response["advertising_text_2"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text_2, max_tokens=50)
+    response["advertising_text_2"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text_2, max_tokens=60)
     response["advertising_text_2"] = response["advertising_text_2"]['choices'][0]['text']
 
-    advertising_text_3 = f"Write an advertising text for a {data} with maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_3']}"
-    response["advertising_text_3"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text_3, max_tokens=50)
+    advertising_text_3 = f"Write an advertising text for a {data} in a maximum of two sentences and less than 150 characters based on this phrase: {response['tagline_3']}"
+    response["advertising_text_3"] = openai.Completion.create(engine='text-curie-001', prompt=advertising_text_3, max_tokens=60)
     response["advertising_text_3"] = response["advertising_text_3"]['choices'][0]['text']
 
-    response['review'] = openai.Completion.create(engine='text-curie-001', prompt=review, max_tokens=25)
+    response['review'] = openai.Completion.create(engine='text-curie-001', prompt=review, max_tokens=40)
     response['review'] = response["review"]['choices'][0]['text']
     
     # devices = "cuda"
