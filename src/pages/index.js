@@ -52,10 +52,10 @@ export default function Home() {
       setStatus('success');
 
       if (isSignedIn) {
-        alert('is signed in, pushing to /genpage');
+        // alert('is signed in, pushing to /genpage');
         router.push('/generatedPage');
       } else {
-        alert('isnt signed in, showing modal');
+        // alert('isnt signed in, showing modal');
         openSignUp({
           afterSignUpUrl: '/generatedPage',
           afterSignInUrl: '/generatedPage',
