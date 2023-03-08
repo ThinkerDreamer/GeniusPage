@@ -2,3 +2,5 @@
 # GeniusPage
 GeniusPage is an AI-powered landing page builder that helps users quickly and easily create beautiful and effective landing pages for their websites.
 By leveraging the power of artificial intelligence and machine learning, GeniusPage provides a user-friendly interface that allows users to customize their pages with ease.
+
+Credit: Placeholder images by <a href="https://unsplash.com/@kellysikkema?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kelly Sikkema</a> on <a href="https://unsplash.com/s/photos/placeholder?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

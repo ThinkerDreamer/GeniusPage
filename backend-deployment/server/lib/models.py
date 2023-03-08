@@ -20,7 +20,8 @@ class LandingPage(Base):
     advertising_text_2 = Column(String(250))
     advertising_text_3 = Column(String(250))
     review = Column(String(200))
-    id_user = Column(Integer, ForeignKey('users.id_user'))
+    id_user = Column(String(40), ForeignKey('users.id_user'))
+    idea = Column(String(250))
 
     users = relationship('User')
 

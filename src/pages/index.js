@@ -52,10 +52,10 @@ export default function Home() {
       setStatus('success');
 
       if (isSignedIn) {
-        alert('is signed in, pushing to /genpage');
+        // alert('is signed in, pushing to /genpage');
         router.push('/generatedPage');
       } else {
-        alert('isnt signed in, showing modal');
+        // alert('isnt signed in, showing modal');
         openSignUp({
           afterSignUpUrl: '/generatedPage',
           afterSignInUrl: '/generatedPage',
@@ -81,6 +81,9 @@ export default function Home() {
           />
         )}
         {status === 'loading' && <h2>Loading...</h2>}
+        {status === 'error' && (
+          <h2>There was an error. Please retry.</h2>
+        )}
       </RainbowContainer>
       <Page.Footer>
         <a

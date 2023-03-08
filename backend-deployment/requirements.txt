@@ -13,6 +13,6 @@ zipp ==3.8.1
 requests >=2.28.1
 openai==0.19.0
 flask-cors==3.0.10
-torch==1.13.1
-diffusers==0.14.0
-
+# torch==1.13.1
+# diffusers==0.14.0
+# transformers==4.26.1
