@@ -2,6 +2,7 @@
 
 FROM python:3.9-slim-bullseye
 
+WORKDIR /backend
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
@@ -13,4 +14,4 @@ RUN pip install -r requirements.txt
 COPY . ./
 
 EXPOSE 8080
-CMD ["gunicorn", "--bind", ":8080", "wsgi:app"]
+CMD ["gunicorn", "--timeout", "1000", "--bind", ":8080", "wsgi:app"]
