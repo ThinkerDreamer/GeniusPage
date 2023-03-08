@@ -120,6 +120,7 @@ def generate_landing_page_infos():
     except:
         print(f"couldn't save data to the database: {data}")
     finally:
+        session.close()
         return jsonify({'response': {'status': 'ok', 'data': response}})
     # return jsonify({'response': {'status': 'ok', 'data': original_data}})
 
