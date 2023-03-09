@@ -20,13 +20,15 @@ By leveraging the power of artificial intelligence and machine learning, GeniusP
 - Save generated pages
 - View saved pages and download their HTML and CSS
 
+![a screenshot of an example generated page](https://user-images.githubusercontent.com/74881094/224033371-3bfb3784-1c7d-478d-a049-68345b6bdd73.png)
+
 ## Frontend
 The frontend is made with React and Next.js, with some React-Bootstrap components. We also use [Clerk](https://clerk.dev/) for secure authentication and authorization.
 
 ## Backend
 The backend is Python with the Flask web framework and a Postgres database. We use SQLAlchemy for Object Relational Mapping. We call an OpenAI API to generate the text for the landing pages, and we wanted to use StableDiffusion to generate images as well, but since this was a group project with a two-week deadline, we were unable to get that to work in time.
 
-![a screenshot of an example generated page](https://user-images.githubusercontent.com/74881094/224033371-3bfb3784-1c7d-478d-a049-68345b6bdd73.png)
+
 
 
 
